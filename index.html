@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niko Afriyanto — Dev Portfolio</title>
+    <meta name="description" content="Portfolio Niko Afriyanto, pelajar SMK Ma'arif Walisongo Sidowangi yang sedang mendalami pengembangan web Fullstack JavaScript: Tailwind CSS, React.js, dan Node.js.">
+    <meta name="theme-color" content="#090d16">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Niko Afriyanto — Dev Portfolio">
+    <meta property="og:description" content="Pelajar SMK yang sedang menekuni Fullstack JavaScript: Tailwind CSS, React.js, dan Node.js.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%90%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#090d16] text-slate-400 font-sans antialiased selection:bg-cyan-500/20 selection:text-cyan-300">
+
+    <a href="#intro" class="skip-link">Lompat ke konten utama</a>
+
+    <div id="cursor" class="hidden md:block"></div>
+    <div id="cursor-ring" class="hidden md:block"></div>
+
+    <canvas id="canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-[#090d16]/70 border-b border-slate-900/60 px-6 py-4">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="#intro" class="text-base font-bold tracking-tight text-white">
+                niko<span class="text-cyan-400">.dev</span>
+            </a>
+
+            <ul class="hidden md:flex items-center gap-7 text-[11px] uppercase tracking-widest font-medium text-slate-400">
+                <li><a href="#about" class="hover:text-cyan-400 transition-colors">Tentang</a></li>
+                <li><a href="#my-skills" class="hover:text-cyan-400 transition-colors">Keahlian</a></li>
+                <li><a href="#my-works" class="hover:text-cyan-400 transition-colors">Proyek</a></li>
+                <li><a href="#contact" class="hover:text-cyan-400 transition-colors">Kontak</a></li>
+            </ul>
+
+            <button id="btn-menu" class="md:hidden relative w-9 h-9 flex items-center justify-center text-slate-300" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger"><span></span><span></span><span></span></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu md:hidden" aria-hidden="true">
+            <ul class="flex flex-col gap-1 px-6 pt-4 pb-5 text-xs uppercase tracking-widest font-medium text-slate-400">
+                <li><a href="#about" class="block py-2.5 hover:text-cyan-400 transition-colors">Tentang</a></li>
+                <li><a href="#my-skills" class="block py-2.5 hover:text-cyan-400 transition-colors">Keahlian</a></li>
+                <li><a href="#my-works" class="block py-2.5 hover:text-cyan-400 transition-colors">Proyek</a></li>
+                <li><a href="#contact" class="block py-2.5 hover:text-cyan-400 transition-colors">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="intro" class="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-16 md:flex md:items-center md:justify-between gap-12 min-h-[80vh] scroll-mt-20">
+        <div class="hero-bg-orb orb1"></div>
+        <div class="hero-bg-orb orb2"></div>
+
+        <div class="md:w-3/5 text-left relative z-10 reveal">
+            <div class="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-400 text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-md mb-6 border border-cyan-500/20">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> Lagi Seru Belajar
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 leading-tight">
+                Halo, saya <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Niko Afriyanto</span>
+            </h1>
+            <p class="text-sm text-cyan-400 mb-5 font-medium tracking-wider uppercase">siswa SMK MA'ARIF WALISONGO SIDOWANGI</p>
+
+            <p class="text-slate-400 leading-relaxed text-[13px] mb-8 max-w-md">
+
+            <div class="flex flex-wrap items-center gap-3">
+                <a href="#my-works" class="bg-cyan-400 text-slate-950 hover:bg-cyan-300 px-5 py-2.5 rounded-lg font-bold transition-colors text-[11px] uppercase tracking-wider">
+                    Lihat Proyek
+                </a>
+                <a href="#contact" class="bg-slate-900 text-cyan-400 hover:bg-slate-800 border border-cyan-500/20 px-5 py-2.5 rounded-lg font-bold transition-colors text-[11px] uppercase tracking-wider">
+                    Hubungi Saya
+                </a>
+            </div>
+
+            <a href="#about" class="hidden md:inline-flex items-center gap-2 mt-14 text-[10px] uppercase tracking-widest text-slate-600 hover:text-cyan-400 transition-colors">
+                Scroll
+                <span class="scroll-chevron">↓</span>
+            </a>
+        </div>
+
+        <div class="mt-12 md:mt-0 md:w-2/5 flex justify-center relative z-10 reveal" style="transition-delay: 120ms;">
+            <div class="relative w-60 h-60 md:w-64 md:h-64 border border-slate-800/60 rounded-xl p-4 bg-slate-900/10 backdrop-blur-sm shadow-2xl flex items-center justify-center">
+                <div class="w-full h-full rounded-lg bg-slate-950 flex flex-col items-center justify-between border border-slate-900/80 p-4">
+                    <div class="w-full flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-slate-700"></span>
+                        <span class="w-2 h-2 rounded-full bg-slate-700"></span>
+                        <span class="w-2 h-2 rounded-full bg-slate-700"></span>
+                    </div>
+                    <span class="text-5xl volley-bounce">🏐</span>
+                    <div class="w-full text-left">
+                        <p id="log-line" class="text-[10px] text-cyan-400 font-medium h-4 leading-4 truncate"></p>
+                        <span class="text-[10px] text-slate-500 tracking-widest font-medium uppercase">NIKO_AFRIYANTO.LOG</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="relative z-10 max-w-5xl mx-auto px-6 py-16 border-t border-slate-900/80 scroll-mt-20">
+        <div class="reveal mb-10">
+            <span class="text-[11px] font-bold text-cyan-400 tracking-widest uppercase">// Tentang Saya</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mt-2">Lagi belajar bikin web yang rapi &amp; aman</h2>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-10 items-start">
+            <div class="md:col-span-3 space-y-4 text-slate-400 leading-relaxed text-[13px] reveal">
+                <p>
+                    siswa SMK Ma'arif Walisongo Sidowangi yang memiliki ketertarikan di bidang Rekayasa Perangkat Lunak. Ketertarikan tersebut berawal dari rasa penasaran tentang bagaimana sebuah website dibuat dan mampu mengelola data dengan cepat serta aman.
+                </p>
+                <p>
+                    Saat ini saya sedang mempelajari ekosistem JavaScript. Di sisi frontend, saya menggunakan Tailwind CSS untuk membangun tampilan yang responsif dan nyaman digunakan di berbagai perangkat. Selain itu, saya juga mulai mendalami pengembangan backend untuk memahami cara membangun API yang terstruktur dan andal.
+                </p>
+                <p class="text-slate-500">
+                   Saya lebih mudah belajar melalui praktik langsung. Karena itu, saya selalu mencoba menerapkan setiap materi yang dipelajari ke dalam proyek sederhana. Melalui Git dan GitHub, saya mendokumentasikan proses belajar dan perkembangan proyek yang saya kerjakan agar lebih terorganisir serta menjadi bekal untuk bekerja dalam tim di masa depan.
+                </p>
+            </div>
+
+            <div class="md:col-span-2 grid grid-cols-3 gap-4 reveal" style="transition-delay: 100ms;">
+                <div class="stat-card">
+                    <span class="stat-number" data-count-target="2">0</span>
+                    <span class="stat-label">Proyek Latihan</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count-target="6">0</span>
+                    <span class="stat-label">Tech Stack</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number stat-emoji">🏐</span>
+                    <span class="stat-label">Hobi Andalan</span>
+                    <p>
+                        Bermain bola voli adalah salah satu hobi yang paling saya nikmati. Selain menyenangkan, olahraga ini membantu saya tetap aktif, menjaga kondisi tubuh, dan mengisi waktu luang dengan kegiatan yang positif.     
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="my-skills" class="relative z-10 max-w-5xl mx-auto px-6 py-16 border-t border-slate-900/80 scroll-mt-20">
+        <div class="reveal mb-10 max-w-xl">
+            <span class="text-[11px] font-bold text-cyan-400 tracking-widest uppercase">// Keahlian</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mt-2 mb-3">Apa yang sedang saya kuasai</h2>
+            <p class="text-slate-500 text-[13px] leading-relaxed">Dari tampilan depan sampai mulai ngulik backend — ini stack yang sehari-hari saya pakai buat latihan.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+            <div class="reveal skill-card">
+                <div class="skill-icon">🎨</div>
+                <h3 class="text-sm font-bold text-white mb-1.5">Frontend Development</h3>
+                <p class="text-slate-400 text-xs leading-relaxed mb-4">Membangun tampilan yang responsif dan rapi, dari layar HP sampai desktop.</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">JavaScript (ES6)</span>
+                </div>
+            </div>
+
+            <div class="reveal skill-card" style="transition-delay: 80ms;">
+                <div class="flex items-center justify-between mb-3.5">
+                    <div class="skill-icon !mb-0">🗄️</div>
+                    <span class="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded uppercase tracking-wider">Sedang Dipelajari</span>
+                </div>
+                <h3 class="text-sm font-bold text-white mb-1.5">Backend Development</h3>
+                <p class="text-slate-400 text-xs leading-relaxed mb-4">Mulai ngulik cara bikin API yang aman dan terstruktur dengan Node.js.</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">REST API</span>
+                </div>
+            </div>
+
+            <div class="reveal skill-card" style="transition-delay: 160ms;">
+                <div class="skill-icon">🔧</div>
+                <h3 class="text-sm font-bold text-white mb-1.5">Version Control &amp; Tools</h3>
+                <p class="text-slate-400 text-xs leading-relaxed mb-4">Mendokumentasikan progres belajar lewat Git biar histori kode tetap rapi.</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                </div>
+            </div>
+
+            <div class="reveal skill-card" style="transition-delay: 240ms;">
+                <div class="skill-icon">🧠</div>
+                <h3 class="text-sm font-bold text-white mb-1.5">Cara Belajar</h3>
+                <p class="text-slate-400 text-xs leading-relaxed mb-4">Learning by doing — coba dulu, gali masalahnya, baru paham konsepnya.</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="skill-tag">Practice-Driven</span>
+                    <span class="skill-tag">Dokumentasi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="my-works" class="relative z-10 max-w-5xl mx-auto px-6 py-16 border-t border-slate-900/80 scroll-mt-20">
+        <div class="reveal mb-10 max-w-xl">
+            <span class="text-[11px] font-bold text-cyan-400 tracking-widest uppercase">// Proyek</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mt-2 mb-3">Eksperimen Kode</h2>
+            <p class="text-slate-500 text-[13px] leading-relaxed">Proyek latihan yang saya bangun buat ngerasain langsung siklus development dari nol.</p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <a href="#" class="reveal project-row" aria-label="Lihat detail Sistem Informasi Perpustakaan (tautan repo segera ditambahkan)">
+                <span class="project-number">01</span>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1.5">
+                        <h3 class="text-base font-bold text-white">Sistem Informasi Perpustakaan</h3>
+                        <span class="text-[10px] text-slate-600">Fullstack / Web</span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-3 max-w-xl">
+                        Aplikasi manajemen perpustakaan untuk pendataan buku, manajemen inventaris, serta otomatisasi pencatatan transaksi peminjaman dan pengembalian buku secara real-time.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+                <span class="project-link-icon" aria-hidden="true">↗</span>
+            </a>
+
+            <a href="#" class="reveal project-row" style="transition-delay: 80ms;" aria-label="Lihat detail Secure REST API System (tautan repo segera ditambahkan)">
+                <span class="project-number">02</span>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1.5">
+                        <h3 class="text-base font-bold text-white">Secure REST API System</h3>
+                        <span class="text-[10px] text-slate-600">Node / Express</span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-3 max-w-xl">
+                        Arsitektur backend menggunakan Node.js/Express dengan autentikasi berbasis Token JWT yang telah lolos uji Postman untuk mengamankan pertukaran data aplikasi.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">JWT</span>
+                    </div>
+                </div>
+                <span class="project-link-icon" aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="relative z-10 max-w-5xl mx-auto px-6 py-16 border-t border-slate-900/80 scroll-mt-20">
+        <div class="reveal max-w-lg mx-auto text-center">
+            <span class="text-[11px] font-bold text-cyan-400 tracking-widest uppercase">// Kontak</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mt-2 mb-3">Yuk, Ngobrol Bareng!</h2>
+            <p class="text-slate-400 text-[13px] leading-relaxed mb-8">
+                Punya proyek belajar bareng, mau kasih koreksi kode, atau cuma mau diskusi soal voli? Kotak masuk saya selalu terbuka.
+            </p>
+
+            <div class="flex items-center justify-between gap-2 bg-slate-900/30 border border-slate-800/80 rounded-lg px-4 py-3 mb-4 text-left">
+                <code id="contact-email" class="text-xs text-cyan-300">nikoafriyanto020@gmail.com</code>
+                <button id="btn-copy-email" class="text-[10px] uppercase font-bold text-slate-400 hover:text-cyan-400 transition-colors shrink-0">Salin</button>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <a href="mailto:nikoafriyanto@gmail.com" class="bg-cyan-400 text-slate-950 hover:bg-cyan-300 px-5 py-2.5 rounded-lg font-bold transition-colors text-[11px] uppercase tracking-wider">
+                    Kirim Email
+                </a>
+                <a href="#" class="bg-slate-900 text-slate-400 hover:text-cyan-400 border border-slate-800/80 px-5 py-2.5 rounded-lg font-bold transition-colors text-[11px] uppercase tracking-wider">
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="relative z-10 text-center py-12 text-slate-600 text-[10px] border-t border-slate-900/80">
+        <p>&copy; 2026 niko.dev — Dibuat dengan 🏐 &amp; rasa penasaran oleh Niko Afriyanto.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
