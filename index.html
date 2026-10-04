@@ -1,850 +1,128 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niko Afriyanto — Portfolio</title>
-    <meta name="description" content="Portfolio Niko Afriyanto — Web Developer & Forex Trader. Pelajar SMK Ma'arif Walisongo Kajoran.">
-    <meta name="theme-color" content="#07080d">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚡%3C/text%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-/* ═══════════════════════════════════════════════════
-   NIKO AFRIYANTO — DARK LUXURY FUTURISTIC PORTFOLIO
-   Black × Gold × Glassmorphism × Neon Glow
-═══════════════════════════════════════════════════ */
-:root {
-    --gold:        #D4AF37;
-    --gold-light:  #FFD700;
-    --gold-dim:    rgba(212,175,55,0.12);
-    --gold-glow:   rgba(212,175,55,0.25);
-    --bg:          #07080d;
-    --bg2:         #0b0c14;
-    --card:        rgba(255,255,255,0.028);
-    --card-border: rgba(212,175,55,0.13);
-    --text:        #d8d8e8;
-    --muted:       #52526a;
-    --cyan:        #22d3ee;
-    --radius:      16px;
-}
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { background:var(--bg); scroll-behavior:smooth; }
-body {
-    font-family:'Space Grotesk','Poppins',sans-serif;
-    color:var(--text); background:var(--bg);
-    -webkit-font-smoothing:antialiased;
-    min-height:100vh; overflow-x:hidden;
-}
-
-/* ── NOISE OVERLAY ── */
-body::after {
-    content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    background-size:200px 200px; opacity:.6;
-}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:rgba(212,175,55,0.35);border-radius:99px}
-::-webkit-scrollbar-thumb:hover{background:rgba(212,175,55,0.6)}
-::selection{background:rgba(212,175,55,0.22);color:var(--gold-light)}
-
-/* ── SKIP LINK ── */
-.skip-link{position:absolute;left:-999px;top:0;z-index:200;background:var(--gold);color:#000;font-weight:700;font-size:12px;padding:10px 16px;border-radius:0 0 8px 0}
-.skip-link:focus{left:0}
-a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
-
-/* ── CURSOR ── */
-#cursor{width:8px;height:8px;background:var(--gold);position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 14px var(--gold),0 0 28px rgba(212,175,55,0.4)}
-#cursor-ring{width:36px;height:36px;border:1px solid rgba(212,175,55,0.35);position:fixed;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease}
-
-/* ── CANVAS ── */
-#canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
-
-/* ── NAVBAR ── */
-nav {
-    position:sticky; top:0; z-index:50;
-    backdrop-filter:blur(24px) saturate(160%);
-    -webkit-backdrop-filter:blur(24px) saturate(160%);
-    background:rgba(7,8,13,0.88);
-    border-bottom:1px solid rgba(212,175,55,0.1);
-    box-shadow:0 1px 60px rgba(0,0,0,0.7);
-    padding:1rem 1.5rem;
-}
-.nav-inner{max-width:1024px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.nav-logo{font-size:1rem;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.02em}
-.nav-logo span{color:var(--gold)}
-.nav-links{display:none;gap:2rem;list-style:none}
-@media(min-width:768px){.nav-links{display:flex;align-items:center}}
-.nav-links a{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--gold)}
-.theme-toggle-btn{background:none;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:5px 10px;cursor:pointer;font-size:13px;transition:border-color .2s}
-.theme-toggle-btn:hover{border-color:rgba(212,175,55,0.4)}
-
-/* ── HAMBURGER ── */
-.hamburger{width:20px;height:14px;position:relative;display:inline-block}
-.hamburger span{position:absolute;left:0;width:100%;height:2px;background:currentColor;border-radius:2px;transition:transform .25s,opacity .25s,top .25s}
-.hamburger span:nth-child(1){top:0}
-.hamburger span:nth-child(2){top:6px}
-.hamburger span:nth-child(3){top:12px}
-#btn-menu[aria-expanded="true"] .hamburger span:nth-child(1){top:6px;transform:rotate(45deg)}
-#btn-menu[aria-expanded="true"] .hamburger span:nth-child(2){opacity:0}
-#btn-menu[aria-expanded="true"] .hamburger span:nth-child(3){top:6px;transform:rotate(-45deg)}
-#btn-menu{display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:none;border:1px solid rgba(255,255,255,0.08);border-radius:8px;cursor:pointer;color:#aaa;transition:border-color .2s}
-#btn-menu:hover{border-color:rgba(212,175,55,0.4);color:var(--gold)}
-@media(min-width:768px){#btn-menu{display:none}}
-
-/* ── MOBILE MENU ── */
-.mobile-menu{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);border-top:1px solid rgba(212,175,55,0.07);background:rgba(7,8,13,.97);backdrop-filter:blur(20px)}
-.mobile-menu.open{max-height:360px}
-.mobile-menu ul{display:flex;flex-direction:column;gap:2px;padding:1rem 1.5rem 1.25rem;list-style:none}
-.mobile-menu a{display:block;padding:.6rem 0;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.04);transition:color .2s}
-.mobile-menu a:hover{color:var(--gold)}
-
-/* ── HERO ORBS ── */
-.orb{position:absolute;border-radius:50%;filter:blur(160px);pointer-events:none;z-index:0}
-.orb1{width:600px;height:600px;background:rgba(212,175,55,0.07);top:-15%;left:-15%}
-.orb2{width:400px;height:400px;background:rgba(34,211,238,0.04);bottom:-5%;right:-5%}
-
-/* ── LAYOUT ── */
-.section{position:relative;z-index:10;max-width:1024px;margin:0 auto;padding:5rem 1.5rem;scroll-margin-top:5rem}
-.section-divider{border-top:1px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(212,175,55,0.2),transparent) 1}
-
-/* ── EYEBROW ── */
-.eyebrow{font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:10px}
-.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);display:inline-block}
-
-/* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
-.reveal.in-view{opacity:1;transform:translateY(0)}
-
-/* ══════════ HERO ══════════ */
-.hero{position:relative;z-index:10;max-width:1024px;margin:0 auto;padding:5rem 1.5rem 4rem;min-height:88vh;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:8px;border:1px solid rgba(212,175,55,0.25);background:rgba(212,175,55,0.07);font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero-title{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:1rem}
-.hero-title .gold-gradient{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
-.hero-desc{font-size:13px;color:var(--muted);line-height:1.75;max-width:420px;margin-bottom:2rem}
-.hero-buttons{display:flex;flex-wrap:wrap;gap:.75rem}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:12px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);color:#000;font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:box-shadow .3s,transform .2s;box-shadow:0 0 24px rgba(212,175,55,0.35)}
-.btn-primary:hover{box-shadow:0 0 48px rgba(212,175,55,0.55);transform:translateY(-2px)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:12px;background:rgba(255,255,255,0.04);color:#aaa;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:all .25s}
-.btn-secondary:hover{background:rgba(212,175,55,0.08);border-color:rgba(212,175,55,0.35);color:var(--gold)}
-.scroll-hint{display:none;margin-top:3rem;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);align-items:center;gap:8px}
-@media(min-width:768px){.scroll-hint{display:flex}}
-.scroll-hint::after{content:'↓';animation:bounce-y 2s ease-in-out infinite}
-@keyframes bounce-y{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-
-/* ── LOG BOX ── */
-.log-box{width:240px;height:240px;border-radius:18px;border:1px solid rgba(212,175,55,0.15);background:rgba(255,255,255,0.025);backdrop-filter:blur(16px);padding:1rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;flex-shrink:0}
-.log-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(212,175,55,0.06) 0%,transparent 65%);pointer-events:none}
-.log-box::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.log-dots{display:flex;gap:5px}
-.log-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.08)}
-.log-emoji{font-size:3rem;text-align:center;line-height:1}
-.log-bottom p{font-size:9.5px;color:var(--gold);font-weight:600;height:14px;transition:opacity .2s}
-.log-bottom span{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.volley-bounce{animation:vb 2.2s ease-in-out infinite}
-@keyframes vb{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-/* ══════════ ABOUT ══════════ */
-.about-grid{display:grid;gap:2.5rem}
-@media(min-width:768px){.about-grid{grid-template-columns:3fr 2fr;align-items:start}}
-.about-text p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:1rem}
-.about-text p:last-child{margin-bottom:0}
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-.stat-card{background:rgba(255,255,255,0.025);border:1px solid var(--card-border);border-radius:14px;padding:.9rem .5rem;text-align:center;backdrop-filter:blur(10px);position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s}
-.stat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(212,175,55,0.06) 0%,transparent 70%);pointer-events:none}
-.stat-card:hover{border-color:rgba(212,175,55,0.35);box-shadow:0 0 30px rgba(212,175,55,0.08)}
-.stat-num{display:block;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
-.stat-emoji{-webkit-text-fill-color:initial!important;background:none!important}
-.stat-label{display:block;font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-
-/* ══════════ SKILLS ══════════ */
-.skills-grid{display:grid;gap:1.25rem}
-@media(min-width:640px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.skills-grid{grid-template-columns:repeat(3,1fr)}}
-.skill-card{background:rgba(255,255,255,0.028);border:1px solid var(--card-border);border-radius:var(--radius);padding:1.5rem;position:relative;overflow:hidden;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .35s,box-shadow .35s,transform .35s}
-.skill-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(212,175,55,0.06) 0%,transparent 65%);pointer-events:none}
-.skill-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.45),transparent);opacity:0;transition:opacity .35s}
-.skill-card:hover{border-color:rgba(212,175,55,0.42);box-shadow:0 0 50px rgba(212,175,55,0.09),0 24px 64px rgba(0,0,0,0.4);transform:translateY(-4px)}
-.skill-card:hover::after{opacity:1}
-.skill-icon-box{width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,0.22);background:rgba(212,175,55,0.08);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:1rem;box-shadow:0 0 18px rgba(212,175,55,0.1),inset 0 1px 0 rgba(212,175,55,0.22)}
-.skill-card h3{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:.3rem}
-.skill-card p{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:1.1rem}
-.bar-wrap{margin-bottom:.75rem}
-.bar-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}
-.bar-label span:first-child{font-size:11px;color:#b0b0c8;font-weight:500}
-.bar-label span:last-child{font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.04em}
-.bar-track{height:3px;background:rgba(255,255,255,0.06);border-radius:99px;overflow:hidden;position:relative}
-.bar-fill{height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,rgba(212,175,55,0.35) 0%,var(--gold) 60%,var(--gold-light) 100%);transition:width 1.2s cubic-bezier(.4,0,.2,1);position:relative}
-.bar-fill::after{content:'';position:absolute;right:0;top:-2.5px;width:7px;height:7px;border-radius:50%;background:var(--gold-light);box-shadow:0 0 10px var(--gold-light);opacity:0;transition:opacity .3s .9s}
-.bar-fill.animated::after{opacity:1}
-.tag{display:inline-block;padding:3px 10px;border-radius:7px;background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.18);font-size:10.5px;color:#c8ad5a;font-weight:600;margin:2px;letter-spacing:.03em;transition:background .2s,border-color .2s,color .2s}
-.tag:hover{background:rgba(212,175,55,0.15);border-color:rgba(212,175,55,0.45);color:var(--gold-light)}
-.badge-learning{font-size:8.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:rgba(16,185,129,0.08);color:#10b981;border:1px solid rgba(16,185,129,0.22)}
-
-/* ══════════ EXPERIENCE ══════════ */
-.timeline{position:relative;padding-left:2.25rem}
-.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--gold) 0%,rgba(212,175,55,0.2) 70%,transparent 100%)}
-.t-item{position:relative;margin-bottom:2.5rem}
-.t-item:last-child{margin-bottom:0}
-.t-dot{position:absolute;left:-2.5rem;top:5px;width:15px;height:15px;border-radius:50%;border:2px solid var(--gold);background:var(--bg);box-shadow:0 0 0 4px rgba(212,175,55,0.1),0 0 18px rgba(212,175,55,0.55);animation:glow-p 3s ease-in-out infinite}
-@keyframes glow-p{0%,100%{box-shadow:0 0 0 4px rgba(212,175,55,0.1),0 0 18px rgba(212,175,55,0.5)}50%{box-shadow:0 0 0 7px rgba(212,175,55,0.08),0 0 32px rgba(212,175,55,0.8),0 0 6px var(--gold-light)}}
-.t-card{background:rgba(255,255,255,0.028);border:1px solid var(--card-border);border-radius:var(--radius);padding:1.3rem 1.5rem;backdrop-filter:blur(14px);position:relative;overflow:hidden;transition:border-color .35s,box-shadow .35s}
-.t-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(212,175,55,0.05) 0%,transparent 70%);pointer-events:none}
-.t-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.35),transparent);opacity:0;transition:opacity .35s}
-.t-card:hover{border-color:rgba(212,175,55,0.38);box-shadow:0 0 45px rgba(212,175,55,0.07),0 20px 50px rgba(0,0,0,0.3)}
-.t-card:hover::after{opacity:1}
-.t-role{font-size:15px;font-weight:700;color:#fff;margin-bottom:.2rem;letter-spacing:-.01em}
-.t-company{font-size:12px;font-weight:600;color:var(--gold)}
-.t-date{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:4px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.025);white-space:nowrap}
-.t-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:1rem}
-.t-bullet{display:flex;gap:.65rem;align-items:flex-start;font-size:12.5px;color:#7a7a90;line-height:1.65;margin-bottom:.6rem}
-.t-bullet:last-child{margin-bottom:0}
-.t-bullet::before{content:'▸';color:var(--gold);flex-shrink:0;margin-top:1px;text-shadow:0 0 8px rgba(212,175,55,0.5)}
-.t-tags{margin-top:1.1rem;display:flex;flex-wrap:wrap;gap:4px}
-
-/* ══════════ PORTFOLIO ══════════ */
-.filter-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
-.filter-btn{padding:6px 16px;border-radius:9px;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:var(--muted);cursor:pointer;transition:all .25s;backdrop-filter:blur(8px)}
-.filter-btn.active,.filter-btn:hover{background:rgba(212,175,55,0.1);color:var(--gold);border-color:rgba(212,175,55,0.38);box-shadow:0 0 20px rgba(212,175,55,0.1)}
-.portfolio-grid{display:grid;gap:1.5rem}
-@media(min-width:640px){.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
-.p-card{background:rgba(255,255,255,0.028);border:1px solid var(--card-border);border-radius:20px;overflow:hidden;backdrop-filter:blur(16px);position:relative;transition:transform .4s cubic-bezier(.4,0,.2,1),border-color .4s,box-shadow .4s}
-.p-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.55),transparent);opacity:0;transition:opacity .4s}
-.p-card:hover{transform:translateY(-8px) scale(1.005);border-color:rgba(212,175,55,0.48);box-shadow:0 0 70px rgba(212,175,55,0.1),0 30px 80px rgba(0,0,0,0.5)}
-.p-card:hover::after{opacity:1}
-.p-card.hidden{display:none}
-.p-thumb{aspect-ratio:16/9;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(212,175,55,0.08);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;font-size:2.8rem}
-.p-thumb-shine{position:absolute;inset:0;background:linear-gradient(135deg,transparent 0%,rgba(212,175,55,0.05) 50%,transparent 100%)}
-.p-body{padding:1.25rem}
-.p-badges{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
-.p-badge{font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:rgba(212,175,55,0.1);color:var(--gold);border:1px solid rgba(212,175,55,0.25)}
-.p-badge-live{background:rgba(16,185,129,0.08);color:#10b981;border-color:rgba(16,185,129,0.25)}
-.p-badge-node{background:rgba(99,102,241,0.08);color:#818cf8;border-color:rgba(99,102,241,0.25)}
-.p-card h3{font-size:14.5px;font-weight:700;color:#fff;margin:.5rem 0 .5rem}
-.p-card p{font-size:11.5px;color:var(--muted);line-height:1.65;margin-bottom:1.1rem}
-.p-links{display:flex;gap:.6rem}
-.p-btn{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 16px;border-radius:9px;border:1px solid rgba(212,175,55,0.22);color:var(--gold);background:rgba(212,175,55,0.07);text-decoration:none;transition:background .25s,border-color .25s,box-shadow .25s}
-.p-btn:hover{background:rgba(212,175,55,0.17);border-color:rgba(212,175,55,0.55);box-shadow:0 0 22px rgba(212,175,55,0.16)}
-.p-btn-muted{color:var(--muted);border-color:rgba(255,255,255,0.08);background:rgba(255,255,255,0.03)}
-.p-btn-muted:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15);color:#ccc;box-shadow:none}
-
-/* ══════════ CONTACT ══════════ */
-.contact-card{background:rgba(255,255,255,0.028);border:1px solid var(--card-border);border-radius:var(--radius);padding:2.5rem 2rem;text-align:center;backdrop-filter:blur(16px);position:relative;overflow:hidden;max-width:540px;margin:0 auto}
-.contact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.contact-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(212,175,55,0.04) 0%,transparent 65%);pointer-events:none}
-.contact-card h2{font-size:1.6rem;font-weight:800;color:#fff;margin:.75rem 0 .75rem;letter-spacing:-.02em}
-.contact-card p{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:2rem}
-.email-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.12);border-radius:10px;padding:.75rem 1rem;margin-bottom:1.25rem;text-align:left}
-.email-row code{font-size:11px;color:var(--gold);font-family:'Space Grotesk',monospace;flex:1;word-break:break-all}
-.btn-copy{font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;flex-shrink:0;transition:color .2s}
-.btn-copy:hover{color:var(--gold)}
-.contact-links{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
-
-/* ══════════ FOOTER ══════════ */
-footer{position:relative;z-index:10;text-align:center;padding:3rem 1.5rem;border-top:1px solid rgba(212,175,55,0.08);font-size:10px;color:var(--muted);letter-spacing:.08em}
-footer span{color:var(--gold)}
-
-/* ══════════ REDUCED MOTION ══════════ */
-@media(prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .reveal{opacity:1;transform:none;transition:none}
-    .volley-bounce,.badge-dot,#badge-dot{animation:none!important}
-    #cursor-ring{transition:none}
-    .bar-fill{transition:none}
-    .p-card:hover,.skill-card:hover{transform:none}
-    .t-dot{animation:none;box-shadow:0 0 0 4px rgba(212,175,55,0.1),0 0 18px rgba(212,175,55,0.5)}
-}
-
-/* ══════════ LIGHT MODE ══════════ */
-html.light-mode{background:#f0f0e8!important}
-html.light-mode body{background:#f0f0e8!important;color:#1a1a2e!important}
-html.light-mode nav{background:rgba(240,240,232,0.92)!important;border-bottom-color:rgba(212,175,55,0.2)!important}
-html.light-mode h1,html.light-mode h2,html.light-mode h3{color:#0c0c1a!important}
-html.light-mode .skill-card,html.light-mode .t-card,html.light-mode .p-card,html.light-mode .stat-card,html.light-mode .log-box,html.light-mode .contact-card,html.light-mode .email-row{background:rgba(255,255,255,0.75)!important;border-color:rgba(212,175,55,0.2)!important}
-html.light-mode .tag,.light-mode .p-badge{background:rgba(212,175,55,0.1)!important}
-html.light-mode section{border-top-color:rgba(212,175,55,0.15)!important}
-html.light-mode footer{border-top-color:rgba(212,175,55,0.15)!important}
-/* ══════════ SOCIAL GRID ══════════ */
-.social-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:1.25rem 0}
-@media(min-width:480px){.social-grid{grid-template-columns:repeat(4,1fr)}}
-.social-card{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:1.1rem .75rem;border-radius:14px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);text-decoration:none;transition:border-color .3s,box-shadow .3s,transform .3s;position:relative;overflow:hidden}
-.social-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(212,175,55,0.04) 0%,transparent 70%);pointer-events:none;opacity:0;transition:opacity .3s}
-.social-card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,0.3);box-shadow:0 0 30px rgba(212,175,55,0.07),0 16px 40px rgba(0,0,0,0.3)}
-.social-card:hover::before{opacity:1}
-.social-icon-wrap{width:48px;height:48px;border-radius:14px;border:1px solid;display:flex;align-items:center;justify-content:center;transition:box-shadow .3s}
-.social-card:hover .social-icon-wrap{box-shadow:0 0 20px rgba(212,175,55,0.15)}
-.social-name{font-size:10.5px;font-weight:700;color:#fff;letter-spacing:.04em}
-.social-handle{font-size:9.5px;color:var(--muted);letter-spacing:.02em;text-align:center;word-break:break-all}
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niko Afriyanto — Siswa PPLG | Web Development</title>
+<meta name="description" content="Portfolio Niko Afriyanto, siswa PPLG SMK Ma'arif Walisongo Kajoran yang sedang belajar web development, UI/UX, dan Laravel.">
+<meta name="theme-color" content="#050506">
+<meta property="og:title" content="Niko Afriyanto — Siswa PPLG">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23050506'/%3E%3Ctext x='50' y='72' font-size='64' font-weight='800' text-anchor='middle' fill='%23F5C518' font-family='Arial'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="boot" aria-hidden="true"><canvas id="lc"></canvas><div id="fl"></div><b>NA</b><span class="mono" id="bt">BOOTING PORTFOLIO... 0%</span><i><em id="be"></em></i></div>
+<div id="prog"></div><canvas id="bg"></canvas>
 
-<a href="#intro" class="skip-link">Lompat ke konten utama</a>
-<div id="cursor" class="hidden-mobile"></div>
-<div id="cursor-ring" class="hidden-mobile"></div>
-<canvas id="canvas"></canvas>
-
-<!-- ══ NAVBAR ══ -->
-<nav id="navbar">
-    <div class="nav-inner">
-        <a href="#intro" class="nav-logo">niko<span>.dev</span></a>
-        <ul class="nav-links">
-            <li><a href="#about">Tentang</a></li>
-            <li><a href="#my-skills">Keahlian</a></li>
-            <li><a href="#experience">Pengalaman</a></li>
-            <li><a href="#my-works">Proyek</a></li>
-            <li><a href="#contact">Kontak</a></li>
-            <li>
-                <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle tema">
-                    <span id="theme-icon">☀️</span>
-                </button>
-            </li>
-        </ul>
-        <button id="btn-menu" aria-label="Buka menu" aria-expanded="false" aria-controls="mobile-menu">
-            <span class="hamburger"><span></span><span></span><span></span></span>
-        </button>
-    </div>
-    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-        <ul>
-            <li><a href="#about">Tentang</a></li>
-            <li><a href="#my-skills">Keahlian</a></li>
-            <li><a href="#experience">Pengalaman</a></li>
-            <li><a href="#my-works">Proyek</a></li>
-            <li><a href="#contact">Kontak</a></li>
-        </ul>
-    </div>
+<nav>
+  <div class="ni">
+    <a href="#top" class="logo">NIKO<span>.AFRIYANTO</span></a>
+    <ul class="nl"><li><a href="#about">Tentang</a></li><li><a href="#skills">Keahlian</a></li><li><a href="#exp">Pengalaman</a></li><li><a href="#works">Proyek</a></li><li><a href="#contact">Kontak</a></li></ul>
+    <button id="bm" aria-label="Buka menu" aria-expanded="false" aria-controls="mm">☰</button>
+  </div>
+  <div id="mm"><a href="#about">Tentang</a><a href="#skills">Keahlian</a><a href="#exp">Pengalaman</a><a href="#works">Proyek</a><a href="#contact">Kontak</a></div>
 </nav>
 
-<!-- ══ HERO ══ -->
-<section id="intro" class="hero">
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-
-    <div class="reveal" style="flex:1;min-width:280px">
-        <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            Aktif Belajar &amp; Berkembang
-        </div>
-        <h1 class="hero-title">
-            <span id="dynamic-greeting">Halo</span>, saya<br>
-            <span class="gold-gradient">Niko Afriyanto</span>
-        </h1>
-        <p class="hero-sub">Web Developer · Forex Trader · Student</p>
-        <p class="hero-desc">Pelajar SMK Ma'arif Walisongo Kajoran yang mendalami pengembangan web dan analisis pasar forex. Membangun hal-hal yang berguna sambil terus belajar dan berkembang.</p>
-        <div class="hero-buttons">
-            <a href="#my-works" class="btn-primary">Lihat Proyek →</a>
-            <a href="#contact" class="btn-secondary">Hubungi Saya</a>
-        </div>
-        <p class="scroll-hint">Scroll untuk lanjut</p>
+<main id="top">
+<section class="sec hero">
+  <div>
+    <span class="live mono">STATUS: AKTIF BELAJAR</span>
+    <p class="greet mono"><span id="greet">Selamat pagi</span>, saya</p>
+    <h1 class="glitch" data-text="Niko Afriyanto">Niko Afriyanto</h1>
+    <p class="role mono" id="role"></p>
+    <p class="lead">Siswa PPLG yang sedang belajar membangun website, memahami UI/UX, dan mengembangkan kemampuan melalui berbagai proyek.</p>
+    <div class="btns"><a href="#works" class="btn p" data-mag>Lihat Proyek</a><a href="#contact" class="btn s" data-mag>Hubungi Saya</a></div>
+  </div>
+  <div>
+    <!-- Foto: assets/images/niko-profile.jpeg (rasio 4:5). Jika file belum ada, tampil monogram. -->
+    <div class="ph" id="ph" data-tilt>
+      <div class="pi" id="pi"><img src="assets/images/niko-profile.jpeg" alt="Niko Afriyanto" width="800" height="1000" fetchpriority="high"><span class="fb">NA</span></div>
+      <span class="chip c1 mono">PPLG</span><span class="chip c2 mono">WEB DEV</span>
     </div>
-
-    <div class="reveal" style="transition-delay:120ms;flex-shrink:0">
-        <div class="log-box">
-            <div class="log-dots">
-                <span class="log-dot"></span>
-                <span class="log-dot"></span>
-                <span class="log-dot"></span>
-            </div>
-            <div class="log-emoji">
-                <span class="volley-bounce" style="display:block;text-align:center">🏐</span>
-            </div>
-            <div class="log-bottom">
-                <p id="log-line"></p>
-                <span>NIKO_AFRIYANTO.LOG</span>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
-<!-- ══ ABOUT ══ -->
-<section id="about" class="section section-divider">
-    <div class="reveal" style="margin-bottom:2.5rem">
-        <span class="eyebrow">// Tentang Saya</span>
-        <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-top:.6rem;letter-spacing:-.02em">Lagi belajar bikin web yang rapi &amp; aman</h2>
+<div class="mq" aria-hidden="true"><div class="mt" id="mt"></div></div>
+
+<section class="sec" id="about">
+  <span class="tag mono rv">// 01 TENTANG</span><h2 class="rv">SISWA YANG SEDANG BELAJAR DAN MENGERJAKAN PROYEK</h2>
+  <div class="ab">
+    <div class="term rv"><div class="th"><i></i><i></i><i></i></div><div class="tb mono" id="tb"></div></div>
+    <div class="sts rv">
+      <div class="st"><b data-c="2">0</b><span>Proyek</span></div>
+      <div class="st"><b data-c="10">0</b><span>Teknologi</span></div>
+      <div class="st"><b>3</b><span>Tahun SMK</span></div>
     </div>
-    <div class="about-grid">
-        <div class="about-text reveal">
-            <p>Siswa SMK Ma'arif Walisongo Kajoran jurusan Pengembangan Perangkat Lunak dan Gim (PPLG). Saya tertarik pada dunia trading forex dan pengembangan website sejak awal masuk sekolah.</p>
-            <p>Dalam trading, saya mempelajari analisis teknikal menggunakan Support &amp; Resistance dan Smart Money Concept (SMC). Dalam web development, saya menguasai HTML, CSS, JavaScript, PHP, Laravel, dan MySQL.</p>
-            <p style="color:var(--muted)">Saya lebih mudah belajar lewat praktik langsung — setiap materi yang dipelajari langsung diterapkan ke proyek nyata. Git &amp; GitHub saya gunakan untuk mendokumentasikan proses belajar dan berkolaborasi.</p>
-            <p style="color:var(--muted)">Di luar coding, bermain bola voli 🏐 adalah cara saya melepas penat sambil melatih kerja tim dan komunikasi.</p>
-        </div>
-        <div class="reveal" style="transition-delay:100ms">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-num" data-count-target="2">0</span>
-                    <span class="stat-label">Proyek</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-num" data-count-target="10">0</span>
-                    <span class="stat-label">Skills</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-num stat-emoji">🏐</span>
-                    <span class="stat-label">Hobi</span>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
-<!-- ══ SKILLS ══ -->
-<section id="my-skills" class="section section-divider">
-    <div class="reveal" style="margin-bottom:2.5rem;max-width:520px">
-        <span class="eyebrow">// Keahlian</span>
-        <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-top:.6rem;letter-spacing:-.02em">Stack &amp; Kemampuan</h2>
-        <p style="font-size:13px;color:var(--muted);margin-top:.6rem;line-height:1.7">Dua dunia yang terus saya asah — dari kode ke pasar, dari logika ke strategi.</p>
-    </div>
-    <div class="skills-grid">
-        <!-- Web Dev -->
-        <div class="skill-card reveal">
-            <div class="skill-icon-box">⌨️</div>
-            <h3>Web Development</h3>
-            <p>Antarmuka responsif dari nol sampai production-ready.</p>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>HTML &amp; CSS</span><span>85%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
-            </div>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>JavaScript</span><span>72%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="72"></div></div>
-            </div>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>PHP &amp; Laravel</span><span>60%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="60"></div></div>
-            </div>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>MySQL</span><span>65%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="65"></div></div>
-            </div>
-            <div style="margin-top:.9rem">
-                <span class="tag">Bootstrap</span>
-                <span class="tag">Tailwind</span>
-                <span class="tag">Git</span>
-                <span class="tag">XAMPP</span>
-            </div>
-        </div>
-        <!-- Backend -->
-        <div class="skill-card reveal" style="transition-delay:80ms">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem">
-                <div class="skill-icon-box" style="margin-bottom:0">🛠️</div>
-                <span class="badge-learning">Dipelajari</span>
-            </div>
-            <h3>Backend &amp; Tools</h3>
-            <p>API terstruktur &amp; workflow developer yang rapi.</p>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>Node.js</span><span>45%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="45"></div></div>
-            </div>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>REST API</span><span>55%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="55"></div></div>
-            </div>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>GitHub</span><span>75%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="75"></div></div>
-            </div>
-            <div style="margin-top:.9rem">
-                <span class="tag">VS Code</span>
-                <span class="tag">Postman</span>
-                <span class="tag">JWT</span>
-            </div>
-        </div>
-        <!-- Trading -->
-        <div class="skill-card reveal" style="transition-delay:160ms">
-            <div class="skill-icon-box">📈</div>
-            <h3>Forex Trading</h3>
-            <p>Analisis pasar dengan metodologi institusional.</p>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>Support &amp; Resistance</span><span>78%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="78"></div></div>
-            </div>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>Smart Money Concept</span><span>70%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="70"></div></div>
-            </div>
-            <div class="bar-wrap">
-                <div class="bar-label"><span>Risk Management</span><span>75%</span></div>
-                <div class="bar-track"><div class="bar-fill" data-width="75"></div></div>
-            </div>
-            <div style="margin-top:.9rem">
-                <span class="tag">TradingView</span>
-                <span class="tag">MetaTrader 5</span>
-                <span class="tag">SMC</span>
-            </div>
-        </div>
-    </div>
+<section class="sec" id="skills">
+  <span class="tag mono rv">// 02 KEAHLIAN</span><h2 class="rv">YANG SEDANG SAYA PELAJARI</h2>
+  <p class="rv" style="color:var(--m);margin:-1.5rem 0 2rem">Level di bawah adalah penilaian jujur saya saat ini, bukan klaim keahlian.</p>
+  <div class="grid g3">
+    <div class="card rv" data-tilt><h3>Web Development</h3><p>Belajar membuat tampilan responsif dan halaman yang rapi.</p>
+      <div class="lv"><div><span>HTML &amp; CSS</span><span>Cukup memahami</span></div><div class="bar"><i data-w="65"></i></div>
+      <div><span>JavaScript</span><span>Dasar, sedang dikembangkan</span></div><div class="bar"><i data-w="35"></i></div>
+      <div><span>PHP &amp; Laravel</span><span>Sedang dipelajari</span></div><div class="bar"><i data-w="45"></i></div>
+      <div><span>MySQL</span><span>Sedang dipelajari</span></div><div class="bar"><i data-w="45"></i></div></div>
+      <span class="tg">Bootstrap</span><span class="tg">Tailwind</span><span class="tg">Figma</span><span class="tg">UI/UX</span></div>
+    <div class="card rv" data-tilt><h3>Backend &amp; Tools</h3><p>Dasar backend dan alat yang dipakai saat mengerjakan proyek.</p>
+      <div class="lv"><div><span>Node.js</span><span>Dasar</span></div><div class="bar"><i data-w="25"></i></div>
+      <div><span>REST API</span><span>Sedang dipelajari</span></div><div class="bar"><i data-w="40"></i></div>
+      <div><span>Git &amp; GitHub</span><span>Sering digunakan</span></div><div class="bar"><i data-w="75"></i></div></div>
+      <span class="tg">VS Code</span><span class="tg">Postman</span><span class="tg">JWT</span><span class="tg">XAMPP</span></div>
+    <div class="card rv" data-tilt><h3>Trading (dasar)</h3><p>Minat tambahan: belajar membaca chart dengan analisis teknikal.</p>
+      <div class="lv"><div><span>Support &amp; Resistance</span><span>Cukup memahami</span></div><div class="bar"><i data-w="60"></i></div>
+      <div><span>Smart Money Concept</span><span>Sedang dipelajari</span></div><div class="bar"><i data-w="45"></i></div>
+      <div><span>Risk Management</span><span>Cukup memahami</span></div><div class="bar"><i data-w="60"></i></div></div>
+      <span class="tg">TradingView</span><span class="tg">MetaTrader 5</span></div>
+  </div>
 </section>
 
-<!-- ══ EXPERIENCE ══ -->
-<section id="experience" class="section section-divider">
-    <div class="reveal" style="margin-bottom:2.5rem">
-        <span class="eyebrow">// Pengalaman</span>
-        <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-top:.6rem;letter-spacing:-.02em">Rekam Jejak</h2>
-        <p style="font-size:13px;color:var(--muted);margin-top:.6rem">Perjalanan belajar dari bangku sekolah hingga pasar finansial.</p>
-    </div>
-    <div class="timeline reveal">
-        <div class="t-item">
-            <div class="t-dot"></div>
-            <div class="t-card">
-                <div class="t-head">
-                    <div>
-                        <p class="t-role">Independent Forex Trader</p>
-                        <p class="t-company">Self-Employed · Remote</p>
-                    </div>
-                    <span class="t-date">2024 — Sekarang</span>
-                </div>
-                <div>
-                    <p class="t-bullet">Menganalisis pergerakan harga menggunakan Support &amp; Resistance dan Smart Money Concept (SMC).</p>
-                    <p class="t-bullet">Mengoperasikan TradingView dan MetaTrader 5 untuk riset dan eksekusi pasar secara real-time.</p>
-                    <p class="t-bullet">Menerapkan manajemen risiko pada setiap transaksi untuk menjaga konsistensi portofolio.</p>
-                    <p class="t-bullet">Membangun disiplin psikologi trading sebagai fondasi pengambilan keputusan rasional.</p>
-                </div>
-                <div class="t-tags">
-                    <span class="tag">SMC</span>
-                    <span class="tag">S&amp;R</span>
-                    <span class="tag">MetaTrader 5</span>
-                    <span class="tag">TradingView</span>
-                    <span class="tag">Risk Management</span>
-                </div>
-            </div>
-        </div>
-        <div class="t-item">
-            <div class="t-dot" style="border-color:#818cf8;box-shadow:0 0 0 4px rgba(129,140,248,0.1),0 0 18px rgba(129,140,248,0.5);animation-name:none"></div>
-            <div class="t-card">
-                <div class="t-head">
-                    <div>
-                        <p class="t-role">Siswa Rekayasa Perangkat Lunak</p>
-                        <p class="t-company" style="color:#818cf8">SMK Ma'arif Walisongo Kajoran</p>
-                    </div>
-                    <span class="t-date">2024 — 2027</span>
-                </div>
-                <div>
-                    <p class="t-bullet">Mempelajari dasar-dasar pemrograman web: HTML, CSS, JavaScript, PHP, dan MySQL.</p>
-                    <p class="t-bullet">Membangun proyek latihan fullstack menggunakan Laravel dan Bootstrap.</p>
-                    <p class="t-bullet">Mengelola version control menggunakan Git &amp; GitHub secara aktif.</p>
-                    <p class="t-bullet">Jurusan Pengembangan Perangkat Lunak dan Gim (PPLG) — fokus aplikasi web modern.</p>
-                </div>
-                <div class="t-tags">
-                    <span class="tag" style="color:#a5b4fc;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.08)">HTML</span>
-                    <span class="tag" style="color:#a5b4fc;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.08)">PHP</span>
-                    <span class="tag" style="color:#a5b4fc;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.08)">Laravel</span>
-                    <span class="tag" style="color:#a5b4fc;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.08)">MySQL</span>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="sec" id="exp">
+  <span class="tag mono rv">// 03 PENGALAMAN</span><h2 class="rv">PERJALANAN BELAJAR</h2>
+  <div class="tl">
+    <div class="ti rv"><div class="card" data-tilt><span class="d mono">2024 — 2027</span><h3>Siswa PPLG</h3><p style="color:var(--g)">SMK Ma'arif Walisongo Kajoran</p>
+      <ul><li>Belajar dasar pemrograman web: HTML, CSS, JavaScript, PHP, dan MySQL.</li><li>Membuat proyek latihan dengan Laravel dan Bootstrap.</li><li>Memakai Git &amp; GitHub untuk menyimpan dan mencatat proses belajar.</li></ul></div></div>
+    <div class="ti rv"><div class="card" data-tilt><span class="d mono">2024 — Sekarang</span><h3>Belajar Trading Forex</h3><p style="color:var(--g)">Mandiri</p>
+      <ul><li>Belajar membaca pergerakan harga dengan Support &amp; Resistance dan Smart Money Concept.</li><li>Memakai TradingView dan MetaTrader 5 untuk latihan analisis.</li><li>Melatih disiplin dan kesabaran dalam mengambil keputusan.</li></ul></div></div>
+  </div>
 </section>
 
-<!-- ══ PORTFOLIO ══ -->
-<section id="my-works" class="section section-divider">
-    <div class="reveal" style="margin-bottom:2.5rem;max-width:520px">
-        <span class="eyebrow">// Proyek</span>
-        <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-top:.6rem;letter-spacing:-.02em">Portfolio Karya</h2>
-        <p style="font-size:13px;color:var(--muted);margin-top:.6rem;line-height:1.7">Eksperimen kode yang dibangun untuk menguji pemahaman langsung di dunia nyata.</p>
-    </div>
-    <div class="filter-row reveal">
-        <button class="filter-btn active" data-filter="all">Semua</button>
-        <button class="filter-btn" data-filter="fullstack">Fullstack</button>
-        <button class="filter-btn" data-filter="backend">Backend</button>
-    </div>
-    <div class="portfolio-grid">
-        <div class="p-card reveal" data-category="fullstack">
-            <div class="p-thumb">
-                📚
-                <div class="p-thumb-shine"></div>
-            </div>
-            <div class="p-body">
-                <div class="p-badges">
-                    <span class="p-badge">Fullstack</span>
-                    <span class="p-badge p-badge-live">● Live</span>
-                </div>
-                <h3>Sistem Informasi Perpustakaan</h3>
-                <p>Aplikasi manajemen perpustakaan — pendataan buku, inventaris, dan pencatatan transaksi peminjaman secara real-time.</p>
-                <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:1.1rem">
-                    <span class="tag">HTML5</span>
-                    <span class="tag">Tailwind</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">PHP</span>
-                </div>
-                <div class="p-links">
-                    <a href="#" class="p-btn">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                        GitHub
-                    </a>
-                    <a href="#" class="p-btn p-btn-muted">Demo ↗</a>
-                </div>
-            </div>
-        </div>
-        <div class="p-card reveal" data-category="backend" style="transition-delay:100ms">
-            <div class="p-thumb" style="background:rgba(7,8,20,.6)">
-                🔐
-                <div class="p-thumb-shine"></div>
-            </div>
-            <div class="p-body">
-                <div class="p-badges">
-                    <span class="p-badge">Backend</span>
-                    <span class="p-badge p-badge-node">Node / Express</span>
-                </div>
-                <h3>Secure REST API System</h3>
-                <p>Arsitektur backend Node.js dengan autentikasi JWT — diuji Postman untuk keamanan pertukaran data aplikasi.</p>
-                <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:1.1rem">
-                    <span class="tag">Node.js</span>
-                    <span class="tag">Express</span>
-                    <span class="tag">JWT</span>
-                    <span class="tag">Postman</span>
-                </div>
-                <div class="p-links">
-                    <a href="#" class="p-btn">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                        GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="sec" id="works">
+  <span class="tag mono rv">// 04 PROYEK</span><h2 class="rv">PROYEK SAYA</h2>
+  <div class="fl rv"><button class="fb2 on" data-f="all">Semua</button><button class="fb2" data-f="fullstack">Fullstack</button><button class="fb2" data-f="backend">Backend</button></div>
+  <div class="grid">
+    <div class="card pc rv" data-c="fullstack" data-tilt><div class="pt">LIB</div><span class="st2 mono">PROJECT LATIHAN</span><h3>Sistem Informasi Perpustakaan</h3>
+      <p>Project latihan untuk mempraktikkan pendataan buku dan pencatatan peminjaman dalam sebuah aplikasi web.</p>
+      <div style="margin-top:.8rem"><span class="tg">HTML5</span><span class="tg">Tailwind</span><span class="tg">JavaScript</span><span class="tg">PHP</span></div>
+      <!-- TODO: ganti href="#" dengan link GitHub / demo asli -->
+      <div class="pl"><a href="#">GitHub</a><a href="#">Demo</a></div></div>
+    <div class="card pc rv" data-c="backend" data-tilt><div class="pt">API</div><span class="st2 mono">SEDANG DIPELAJARI</span><h3>Secure REST API System</h3>
+      <p>Project yang dibuat untuk mempelajari REST API dengan Node.js, login memakai JWT, dan pengujian lewat Postman.</p>
+      <div style="margin-top:.8rem"><span class="tg">Node.js</span><span class="tg">Express</span><span class="tg">JWT</span><span class="tg">Postman</span></div>
+      <div class="pl"><a href="#">GitHub</a></div></div>
+  </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
-<section id="contact" class="section section-divider">
-    <div class="contact-card reveal">
-        <span class="eyebrow" style="justify-content:center">// Kontak</span>
-        <h2>Yuk, Ngobrol Bareng!</h2>
-        <p>Punya proyek belajar bareng, mau kasih koreksi kode, atau cuma mau diskusi soal voli? Saya selalu terbuka.</p>
-
-        <div class="email-row">
-            <code id="contact-email">nikoafriyanto020@gmail.com</code>
-            <button id="btn-copy-email" class="btn-copy">Salin</button>
-        </div>
-
-        <!-- SOCIAL GRID -->
-        <div class="social-grid">
-            <!-- Email -->
-            <a href="mailto:nikoafriyanto020@gmail.com" class="social-card" aria-label="Email">
-                <div class="social-icon-wrap" style="background:rgba(234,67,53,0.1);border-color:rgba(234,67,53,0.25)">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ea4335" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>
-                </div>
-                <span class="social-name">Email</span>
-                <span class="social-handle">nikoafriyanto020@gmail.com</span>
-            </a>
-
-            <!-- WhatsApp -->
-            <a href="https://wa.me/6285848658854" target="_blank" rel="noopener" class="social-card" aria-label="WhatsApp">
-                <div class="social-icon-wrap" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.25)">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12c0 1.77.466 3.428 1.276 4.868L2 22l5.28-1.246A9.953 9.953 0 0 0 12.004 22C17.53 22 22 17.523 22 12S17.53 2 12.004 2z"/></svg>
-                </div>
-                <span class="social-name">WhatsApp</span>
-                <span class="social-handle">085848658854</span>
-            </a>
-
-            <!-- Instagram -->
-            <a href="https://instagram.com/n_advisori_" target="_blank" rel="noopener" class="social-card" aria-label="Instagram">
-                <div class="social-icon-wrap" style="background:rgba(225,48,108,0.1);border-color:rgba(225,48,108,0.25)">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="1.8">
-                        <defs>
-                            <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#f09433"/>
-                                <stop offset="25%" stop-color="#e6683c"/>
-                                <stop offset="50%" stop-color="#dc2743"/>
-                                <stop offset="75%" stop-color="#cc2366"/>
-                                <stop offset="100%" stop-color="#bc1888"/>
-                            </linearGradient>
-                        </defs>
-                        <rect x="2" y="2" width="20" height="20" rx="5"/>
-                        <circle cx="12" cy="12" r="4.5"/>
-                        <circle cx="17.5" cy="6.5" r="1" fill="#dc2743" stroke="none"/>
-                    </svg>
-                </div>
-                <span class="social-name">Instagram</span>
-                <span class="social-handle">@n_advisori_</span>
-            </a>
-
-            <!-- TikTok -->
-            <a href="https://tiktok.com/@ur.nko04" target="_blank" rel="noopener" class="social-card" aria-label="TikTok">
-                <div class="social-icon-wrap" style="background:rgba(255,0,80,0.08);border-color:rgba(255,0,80,0.2)">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
-                </div>
-                <span class="social-name">TikTok</span>
-                <span class="social-handle">@ur.nko04</span>
-            </a>
-        </div>
-
-        <div class="contact-links" style="margin-top:1.5rem">
-            <a href="mailto:nikoafriyanto020@gmail.com" class="btn-primary">Kirim Email →</a>
-            <a href="https://wa.me/6285848658854" target="_blank" rel="noopener" class="btn-secondary">Chat WhatsApp</a>
-        </div>
-    </div>
+<section class="sec ct" id="contact">
+  <span class="tag mono rv">// 05 KONTAK</span><h2 class="rv">ADA YANG INGIN DIDISKUSIKAN?</h2>
+  <p class="rv" style="color:var(--m);max-width:520px;margin:-1.5rem auto 2rem">Saya terbuka untuk berdiskusi tentang project, belajar web development, atau hal lainnya.</p>
+  <div class="em mono rv"><span id="mail">nikoafriyanto020@gmail.com</span><button id="cp">Salin</button></div>
+  <div class="sg">
+    <a class="card sc rv" data-tilt href="mailto:nikoafriyanto020@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg><b>Email</b><span>nikoafriyanto020@gmail.com</span></a>
+    <a class="card sc rv" data-tilt href="https://wa.me/6285848658854" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#F5C518"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.3A10 10 0 1 0 12 2zm5 13.8c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-3-1.2-5-4.3-5.1-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6c-.2.2-.3.4-.1.7.7 1.2 1.6 2 2.8 2.6.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.7-.1l1.9.9c.3.1.4.2.5.4 0 .2 0 .8-.2 1.4z"/></svg><b>WhatsApp</b><span>085848658854</span></a>
+    <a class="card sc rv" data-tilt href="https://instagram.com/n_advisori_" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="#F5C518" stroke="none"/></svg><b>Instagram</b><span>@n_advisori_</span></a>
+    <a class="card sc rv" data-tilt href="https://tiktok.com/@ur.nko04" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="#F5C518"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.3V2h-3.4v13.7a2.9 2.9 0 0 1-2.9 2.5 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9c.3 0 .5 0 .8.1V9a6.3 6.3 0 0 0-.8 0 6.3 6.3 0 0 0-6.3 6.3 6.3 6.3 0 0 0 6.3 6.3 6.3 6.3 0 0 0 6.3-6.3V8.7a8.2 8.2 0 0 0 4.8 1.5V6.8a4.9 4.9 0 0 1-1-.1z"/></svg><b>TikTok</b><span>@ur.nko04</span></a>
+  </div>
 </section>
+</main>
 
-<footer>
-    <p>&copy; 2026 <span>niko.dev</span> — Dibuat dengan 🏐 &amp; rasa penasaran oleh <span>Niko Afriyanto</span></p>
-</footer>
+<footer><p>&copy; 2026 Niko Afriyanto</p><p class="mono">Student • PPLG • Web Development</p></footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    /* ── GREETING ── */
-    const greetEl = document.getElementById('dynamic-greeting');
-    if (greetEl) {
-        const h = new Date().getHours();
-        greetEl.textContent = h>=5&&h<11 ? 'Selamat pagi' : h>=11&&h<15 ? 'Selamat siang' : h>=15&&h<18 ? 'Selamat sore' : 'Selamat malam';
-    }
-
-    /* ── CURSOR ── */
-    const cur = document.getElementById('cursor');
-    const ring = document.getElementById('cursor-ring');
-    if (cur && ring && !reduceMotion) {
-        document.addEventListener('mousemove', e => {
-            cur.style.left = e.clientX+'px'; cur.style.top = e.clientY+'px';
-            ring.style.left = e.clientX+'px'; ring.style.top = e.clientY+'px';
-        });
-        cur.style.display='block'; ring.style.display='block';
-    }
-
-    /* ── PARTICLES ── */
-    const canvas = document.getElementById('canvas');
-    if (canvas && !reduceMotion) {
-        const ctx = canvas.getContext('2d');
-        let pts = [];
-        const resize = () => { canvas.width=innerWidth; canvas.height=innerHeight; };
-        resize(); window.addEventListener('resize', () => { resize(); init(); });
-        const n = () => innerWidth < 640 ? 20 : 45;
-        class P {
-            constructor() { this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height; this.s=Math.random()*1.5+.5; this.vx=Math.random()*.35-.17; this.vy=Math.random()*.35-.17; }
-            u() { this.x+=this.vx; this.y+=this.vy; if(this.x>canvas.width)this.x=0; if(this.x<0)this.x=canvas.width; if(this.y>canvas.height)this.y=0; if(this.y<0)this.y=canvas.height; }
-            d() { ctx.fillStyle='rgba(212,175,55,0.12)'; ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fill(); }
-        }
-        const init = () => { pts=[]; for(let i=0;i<n();i++) pts.push(new P()); };
-        let raf;
-        const loop = () => { ctx.clearRect(0,0,canvas.width,canvas.height); pts.forEach(p=>{p.u();p.d();}); raf=requestAnimationFrame(loop); };
-        document.addEventListener('visibilitychange',()=>{ if(document.hidden){cancelAnimationFrame(raf);raf=null;}else if(!raf)loop(); });
-        init(); loop();
-    }
-
-    /* ── MOBILE MENU ── */
-    const btnMenu = document.getElementById('btn-menu');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (btnMenu && mobileMenu) {
-        const close = () => { mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); btnMenu.setAttribute('aria-expanded','false'); };
-        btnMenu.addEventListener('click', () => {
-            const open = mobileMenu.classList.toggle('open');
-            mobileMenu.setAttribute('aria-hidden', open?'false':'true');
-            btnMenu.setAttribute('aria-expanded', open?'true':'false');
-        });
-        mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
-    }
-
-    /* ── REVEAL ── */
-    const reveals = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target);} });
-        }, { threshold:.12, rootMargin:'0px 0px -30px 0px' });
-        reveals.forEach(el=>obs.observe(el));
-    } else { reveals.forEach(el=>el.classList.add('in-view')); }
-
-    /* ── SKILL BARS ── */
-    const bars = document.querySelectorAll('.bar-fill[data-width]');
-    if ('IntersectionObserver' in window && bars.length) {
-        const bObs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.style.width = e.target.getAttribute('data-width')+'%';
-                    setTimeout(()=>e.target.classList.add('animated'), 900);
-                    bObs.unobserve(e.target);
-                }
-            });
-        }, { threshold:.3 });
-        bars.forEach(b=>bObs.observe(b));
-    } else { bars.forEach(b=>{ b.style.width=b.getAttribute('data-width')+'%'; b.classList.add('animated'); }); }
-
-    /* ── COUNTER ── */
-    document.querySelectorAll('[data-count-target]').forEach(el => {
-        const target = +el.getAttribute('data-count-target');
-        if (reduceMotion) { el.textContent=target; return; }
-        const obs = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting) {
-                let cur=0; const step=Math.ceil(target/40);
-                const t = setInterval(()=>{ cur=Math.min(cur+step,target); el.textContent=cur; if(cur>=target)clearInterval(t); },40);
-                obs.disconnect();
-            }
-        },{ threshold:.5 });
-        obs.observe(el);
-    });
-
-    /* ── FILTER ── */
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const pCards = document.querySelectorAll('.p-card[data-category]');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b=>b.classList.remove('active'));
-            btn.classList.add('active');
-            const f = btn.getAttribute('data-filter');
-            pCards.forEach(c => {
-                if (f==='all' || c.getAttribute('data-category')===f) c.classList.remove('hidden');
-                else c.classList.add('hidden');
-            });
-        });
-    });
-
-    /* ── LOG LINE ── */
-    const logLine = document.getElementById('log-line');
-    if (logLine) {
-        const logs = ['> git commit -m "fix bug"','> npm run dev','> serve_ball() -> ace!','> belajar.next_topic()','> status: masih ngulik'];
-        let i=0; logLine.textContent=logs[0];
-        if (!reduceMotion) {
-            logLine.style.transition='opacity .2s';
-            setInterval(()=>{ i=(i+1)%logs.length; logLine.style.opacity='0'; setTimeout(()=>{ logLine.textContent=logs[i]; logLine.style.opacity='1'; },200); },2800);
-        }
-    }
-
-    /* ── COPY EMAIL ── */
-    const btnCopy = document.getElementById('btn-copy-email');
-    const emailEl = document.getElementById('contact-email');
-    if (btnCopy && emailEl) {
-        btnCopy.addEventListener('click', async () => {
-            try { await navigator.clipboard.writeText(emailEl.textContent.trim()); const orig=btnCopy.textContent; btnCopy.textContent='Tersalin!'; setTimeout(()=>btnCopy.textContent=orig,1800); }
-            catch(e){}
-        });
-    }
-
-    /* ── THEME TOGGLE ── */
-    const toggleBtn = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    if (toggleBtn) {
-        if (localStorage.getItem('theme')==='light') { document.documentElement.classList.add('light-mode'); if(themeIcon)themeIcon.textContent='🌙'; }
-        toggleBtn.addEventListener('click', () => {
-            const isLight = document.documentElement.classList.toggle('light-mode');
-            localStorage.setItem('theme', isLight?'light':'dark');
-            if(themeIcon)themeIcon.textContent=isLight?'🌙':'☀️';
-        });
-    }
-
-    /* ── CLICK SOUND ── */
-    try {
-        const audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-        document.querySelectorAll('a,button').forEach(el => {
-            el.addEventListener('click', () => {
-                if (reduceMotion) return;
-                if (audioCtx.state==='suspended') audioCtx.resume();
-                const osc=audioCtx.createOscillator(); const gain=audioCtx.createGain();
-                osc.type='sine'; osc.frequency.setValueAtTime(520,audioCtx.currentTime);
-                gain.gain.setValueAtTime(.015,audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(.00001,audioCtx.currentTime+.06);
-                osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime+.06);
-            });
-        });
-    } catch(e){}
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
