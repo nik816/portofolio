@@ -3,285 +3,848 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niko Afriyanto — Dev Portfolio</title>
-    <meta name="description" content="Portfolio Niko Afriyanto, pelajar SMK Ma'arif Walisongo Sidowangi yang sedang mendalami pengembangan web Fullstack JavaScript: Tailwind CSS, React.js, dan Node.js.">
-    <meta name="theme-color" content="#090d16">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Niko Afriyanto — Dev Portfolio">
-    <meta property="og:description" content="Pelajar SMK yang sedang menekuni Fullstack JavaScript: Tailwind CSS, React.js, dan Node.js.">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%90%3C/text%3E%3C/svg%3E">
+    <title>Niko Afriyanto — Portfolio</title>
+    <meta name="description" content="Portfolio Niko Afriyanto — Web Developer & Forex Trader. Pelajar SMK Ma'arif Walisongo Kajoran.">
+    <meta name="theme-color" content="#07080d">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚡%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/* ═══════════════════════════════════════════════════
+   NIKO AFRIYANTO — DARK LUXURY FUTURISTIC PORTFOLIO
+   Black × Gold × Glassmorphism × Neon Glow
+═══════════════════════════════════════════════════ */
+:root {
+    --gold:        #D4AF37;
+    --gold-light:  #FFD700;
+    --gold-dim:    rgba(212,175,55,0.12);
+    --gold-glow:   rgba(212,175,55,0.25);
+    --bg:          #07080d;
+    --bg2:         #0b0c14;
+    --card:        rgba(255,255,255,0.028);
+    --card-border: rgba(212,175,55,0.13);
+    --text:        #d8d8e8;
+    --muted:       #52526a;
+    --cyan:        #22d3ee;
+    --radius:      16px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { background:var(--bg); scroll-behavior:smooth; }
+body {
+    font-family:'Space Grotesk','Poppins',sans-serif;
+    color:var(--text); background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh; overflow-x:hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::after {
+    content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size:200px 200px; opacity:.6;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(212,175,55,0.35);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:rgba(212,175,55,0.6)}
+::selection{background:rgba(212,175,55,0.22);color:var(--gold-light)}
+
+/* ── SKIP LINK ── */
+.skip-link{position:absolute;left:-999px;top:0;z-index:200;background:var(--gold);color:#000;font-weight:700;font-size:12px;padding:10px 16px;border-radius:0 0 8px 0}
+.skip-link:focus{left:0}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ── CURSOR ── */
+#cursor{width:8px;height:8px;background:var(--gold);position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 14px var(--gold),0 0 28px rgba(212,175,55,0.4)}
+#cursor-ring{width:36px;height:36px;border:1px solid rgba(212,175,55,0.35);position:fixed;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease}
+
+/* ── CANVAS ── */
+#canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
+
+/* ── NAVBAR ── */
+nav {
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:blur(24px) saturate(160%);
+    -webkit-backdrop-filter:blur(24px) saturate(160%);
+    background:rgba(7,8,13,0.88);
+    border-bottom:1px solid rgba(212,175,55,0.1);
+    box-shadow:0 1px 60px rgba(0,0,0,0.7);
+    padding:1rem 1.5rem;
+}
+.nav-inner{max-width:1024px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-size:1rem;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.02em}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:none;gap:2rem;list-style:none}
+@media(min-width:768px){.nav-links{display:flex;align-items:center}}
+.nav-links a{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.theme-toggle-btn{background:none;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:5px 10px;cursor:pointer;font-size:13px;transition:border-color .2s}
+.theme-toggle-btn:hover{border-color:rgba(212,175,55,0.4)}
+
+/* ── HAMBURGER ── */
+.hamburger{width:20px;height:14px;position:relative;display:inline-block}
+.hamburger span{position:absolute;left:0;width:100%;height:2px;background:currentColor;border-radius:2px;transition:transform .25s,opacity .25s,top .25s}
+.hamburger span:nth-child(1){top:0}
+.hamburger span:nth-child(2){top:6px}
+.hamburger span:nth-child(3){top:12px}
+#btn-menu[aria-expanded="true"] .hamburger span:nth-child(1){top:6px;transform:rotate(45deg)}
+#btn-menu[aria-expanded="true"] .hamburger span:nth-child(2){opacity:0}
+#btn-menu[aria-expanded="true"] .hamburger span:nth-child(3){top:6px;transform:rotate(-45deg)}
+#btn-menu{display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:none;border:1px solid rgba(255,255,255,0.08);border-radius:8px;cursor:pointer;color:#aaa;transition:border-color .2s}
+#btn-menu:hover{border-color:rgba(212,175,55,0.4);color:var(--gold)}
+@media(min-width:768px){#btn-menu{display:none}}
+
+/* ── MOBILE MENU ── */
+.mobile-menu{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);border-top:1px solid rgba(212,175,55,0.07);background:rgba(7,8,13,.97);backdrop-filter:blur(20px)}
+.mobile-menu.open{max-height:360px}
+.mobile-menu ul{display:flex;flex-direction:column;gap:2px;padding:1rem 1.5rem 1.25rem;list-style:none}
+.mobile-menu a{display:block;padding:.6rem 0;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.04);transition:color .2s}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* ── HERO ORBS ── */
+.orb{position:absolute;border-radius:50%;filter:blur(160px);pointer-events:none;z-index:0}
+.orb1{width:600px;height:600px;background:rgba(212,175,55,0.07);top:-15%;left:-15%}
+.orb2{width:400px;height:400px;background:rgba(34,211,238,0.04);bottom:-5%;right:-5%}
+
+/* ── LAYOUT ── */
+.section{position:relative;z-index:10;max-width:1024px;margin:0 auto;padding:5rem 1.5rem;scroll-margin-top:5rem}
+.section-divider{border-top:1px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(212,175,55,0.2),transparent) 1}
+
+/* ── EYEBROW ── */
+.eyebrow{font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);display:inline-block}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+
+/* ══════════ HERO ══════════ */
+.hero{position:relative;z-index:10;max-width:1024px;margin:0 auto;padding:5rem 1.5rem 4rem;min-height:88vh;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:8px;border:1px solid rgba(212,175,55,0.25);background:rgba(212,175,55,0.07);font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-title{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:1rem}
+.hero-title .gold-gradient{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.hero-desc{font-size:13px;color:var(--muted);line-height:1.75;max-width:420px;margin-bottom:2rem}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:12px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);color:#000;font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:box-shadow .3s,transform .2s;box-shadow:0 0 24px rgba(212,175,55,0.35)}
+.btn-primary:hover{box-shadow:0 0 48px rgba(212,175,55,0.55);transform:translateY(-2px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:12px;background:rgba(255,255,255,0.04);color:#aaa;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:all .25s}
+.btn-secondary:hover{background:rgba(212,175,55,0.08);border-color:rgba(212,175,55,0.35);color:var(--gold)}
+.scroll-hint{display:none;margin-top:3rem;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);align-items:center;gap:8px}
+@media(min-width:768px){.scroll-hint{display:flex}}
+.scroll-hint::after{content:'↓';animation:bounce-y 2s ease-in-out infinite}
+@keyframes bounce-y{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* ── LOG BOX ── */
+.log-box{width:240px;height:240px;border-radius:18px;border:1px solid rgba(212,175,55,0.15);background:rgba(255,255,255,0.025);backdrop-filter:blur(16px);padding:1rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;flex-shrink:0}
+.log-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(212,175,55,0.06) 0%,transparent 65%);pointer-events:none}
+.log-box::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.log-dots{display:flex;gap:5px}
+.log-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.08)}
+.log-emoji{font-size:3rem;text-align:center;line-height:1}
+.log-bottom p{font-size:9.5px;color:var(--gold);font-weight:600;height:14px;transition:opacity .2s}
+.log-bottom span{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.volley-bounce{animation:vb 2.2s ease-in-out infinite}
+@keyframes vb{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ══════════ ABOUT ══════════ */
+.about-grid{display:grid;gap:2.5rem}
+@media(min-width:768px){.about-grid{grid-template-columns:3fr 2fr;align-items:start}}
+.about-text p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:1rem}
+.about-text p:last-child{margin-bottom:0}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.stat-card{background:rgba(255,255,255,0.025);border:1px solid var(--card-border);border-radius:14px;padding:.9rem .5rem;text-align:center;backdrop-filter:blur(10px);position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s}
+.stat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(212,175,55,0.06) 0%,transparent 70%);pointer-events:none}
+.stat-card:hover{border-color:rgba(212,175,55,0.35);box-shadow:0 0 30px rgba(212,175,55,0.08)}
+.stat-num{display:block;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.stat-emoji{-webkit-text-fill-color:initial!important;background:none!important}
+.stat-label{display:block;font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+/* ══════════ SKILLS ══════════ */
+.skills-grid{display:grid;gap:1.25rem}
+@media(min-width:640px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.skills-grid{grid-template-columns:repeat(3,1fr)}}
+.skill-card{background:rgba(255,255,255,0.028);border:1px solid var(--card-border);border-radius:var(--radius);padding:1.5rem;position:relative;overflow:hidden;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .35s,box-shadow .35s,transform .35s}
+.skill-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(212,175,55,0.06) 0%,transparent 65%);pointer-events:none}
+.skill-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.45),transparent);opacity:0;transition:opacity .35s}
+.skill-card:hover{border-color:rgba(212,175,55,0.42);box-shadow:0 0 50px rgba(212,175,55,0.09),0 24px 64px rgba(0,0,0,0.4);transform:translateY(-4px)}
+.skill-card:hover::after{opacity:1}
+.skill-icon-box{width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,0.22);background:rgba(212,175,55,0.08);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:1rem;box-shadow:0 0 18px rgba(212,175,55,0.1),inset 0 1px 0 rgba(212,175,55,0.22)}
+.skill-card h3{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:.3rem}
+.skill-card p{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:1.1rem}
+.bar-wrap{margin-bottom:.75rem}
+.bar-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}
+.bar-label span:first-child{font-size:11px;color:#b0b0c8;font-weight:500}
+.bar-label span:last-child{font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.04em}
+.bar-track{height:3px;background:rgba(255,255,255,0.06);border-radius:99px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,rgba(212,175,55,0.35) 0%,var(--gold) 60%,var(--gold-light) 100%);transition:width 1.2s cubic-bezier(.4,0,.2,1);position:relative}
+.bar-fill::after{content:'';position:absolute;right:0;top:-2.5px;width:7px;height:7px;border-radius:50%;background:var(--gold-light);box-shadow:0 0 10px var(--gold-light);opacity:0;transition:opacity .3s .9s}
+.bar-fill.animated::after{opacity:1}
+.tag{display:inline-block;padding:3px 10px;border-radius:7px;background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.18);font-size:10.5px;color:#c8ad5a;font-weight:600;margin:2px;letter-spacing:.03em;transition:background .2s,border-color .2s,color .2s}
+.tag:hover{background:rgba(212,175,55,0.15);border-color:rgba(212,175,55,0.45);color:var(--gold-light)}
+.badge-learning{font-size:8.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:rgba(16,185,129,0.08);color:#10b981;border:1px solid rgba(16,185,129,0.22)}
+
+/* ══════════ EXPERIENCE ══════════ */
+.timeline{position:relative;padding-left:2.25rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--gold) 0%,rgba(212,175,55,0.2) 70%,transparent 100%)}
+.t-item{position:relative;margin-bottom:2.5rem}
+.t-item:last-child{margin-bottom:0}
+.t-dot{position:absolute;left:-2.5rem;top:5px;width:15px;height:15px;border-radius:50%;border:2px solid var(--gold);background:var(--bg);box-shadow:0 0 0 4px rgba(212,175,55,0.1),0 0 18px rgba(212,175,55,0.55);animation:glow-p 3s ease-in-out infinite}
+@keyframes glow-p{0%,100%{box-shadow:0 0 0 4px rgba(212,175,55,0.1),0 0 18px rgba(212,175,55,0.5)}50%{box-shadow:0 0 0 7px rgba(212,175,55,0.08),0 0 32px rgba(212,175,55,0.8),0 0 6px var(--gold-light)}}
+.t-card{background:rgba(255,255,255,0.028);border:1px solid var(--card-border);border-radius:var(--radius);padding:1.3rem 1.5rem;backdrop-filter:blur(14px);position:relative;overflow:hidden;transition:border-color .35s,box-shadow .35s}
+.t-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(212,175,55,0.05) 0%,transparent 70%);pointer-events:none}
+.t-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.35),transparent);opacity:0;transition:opacity .35s}
+.t-card:hover{border-color:rgba(212,175,55,0.38);box-shadow:0 0 45px rgba(212,175,55,0.07),0 20px 50px rgba(0,0,0,0.3)}
+.t-card:hover::after{opacity:1}
+.t-role{font-size:15px;font-weight:700;color:#fff;margin-bottom:.2rem;letter-spacing:-.01em}
+.t-company{font-size:12px;font-weight:600;color:var(--gold)}
+.t-date{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:4px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.025);white-space:nowrap}
+.t-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:1rem}
+.t-bullet{display:flex;gap:.65rem;align-items:flex-start;font-size:12.5px;color:#7a7a90;line-height:1.65;margin-bottom:.6rem}
+.t-bullet:last-child{margin-bottom:0}
+.t-bullet::before{content:'▸';color:var(--gold);flex-shrink:0;margin-top:1px;text-shadow:0 0 8px rgba(212,175,55,0.5)}
+.t-tags{margin-top:1.1rem;display:flex;flex-wrap:wrap;gap:4px}
+
+/* ══════════ PORTFOLIO ══════════ */
+.filter-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.filter-btn{padding:6px 16px;border-radius:9px;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:var(--muted);cursor:pointer;transition:all .25s;backdrop-filter:blur(8px)}
+.filter-btn.active,.filter-btn:hover{background:rgba(212,175,55,0.1);color:var(--gold);border-color:rgba(212,175,55,0.38);box-shadow:0 0 20px rgba(212,175,55,0.1)}
+.portfolio-grid{display:grid;gap:1.5rem}
+@media(min-width:640px){.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
+.p-card{background:rgba(255,255,255,0.028);border:1px solid var(--card-border);border-radius:20px;overflow:hidden;backdrop-filter:blur(16px);position:relative;transition:transform .4s cubic-bezier(.4,0,.2,1),border-color .4s,box-shadow .4s}
+.p-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.55),transparent);opacity:0;transition:opacity .4s}
+.p-card:hover{transform:translateY(-8px) scale(1.005);border-color:rgba(212,175,55,0.48);box-shadow:0 0 70px rgba(212,175,55,0.1),0 30px 80px rgba(0,0,0,0.5)}
+.p-card:hover::after{opacity:1}
+.p-card.hidden{display:none}
+.p-thumb{aspect-ratio:16/9;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(212,175,55,0.08);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;font-size:2.8rem}
+.p-thumb-shine{position:absolute;inset:0;background:linear-gradient(135deg,transparent 0%,rgba(212,175,55,0.05) 50%,transparent 100%)}
+.p-body{padding:1.25rem}
+.p-badges{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.p-badge{font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:rgba(212,175,55,0.1);color:var(--gold);border:1px solid rgba(212,175,55,0.25)}
+.p-badge-live{background:rgba(16,185,129,0.08);color:#10b981;border-color:rgba(16,185,129,0.25)}
+.p-badge-node{background:rgba(99,102,241,0.08);color:#818cf8;border-color:rgba(99,102,241,0.25)}
+.p-card h3{font-size:14.5px;font-weight:700;color:#fff;margin:.5rem 0 .5rem}
+.p-card p{font-size:11.5px;color:var(--muted);line-height:1.65;margin-bottom:1.1rem}
+.p-links{display:flex;gap:.6rem}
+.p-btn{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 16px;border-radius:9px;border:1px solid rgba(212,175,55,0.22);color:var(--gold);background:rgba(212,175,55,0.07);text-decoration:none;transition:background .25s,border-color .25s,box-shadow .25s}
+.p-btn:hover{background:rgba(212,175,55,0.17);border-color:rgba(212,175,55,0.55);box-shadow:0 0 22px rgba(212,175,55,0.16)}
+.p-btn-muted{color:var(--muted);border-color:rgba(255,255,255,0.08);background:rgba(255,255,255,0.03)}
+.p-btn-muted:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15);color:#ccc;box-shadow:none}
+
+/* ══════════ CONTACT ══════════ */
+.contact-card{background:rgba(255,255,255,0.028);border:1px solid var(--card-border);border-radius:var(--radius);padding:2.5rem 2rem;text-align:center;backdrop-filter:blur(16px);position:relative;overflow:hidden;max-width:540px;margin:0 auto}
+.contact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.contact-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(212,175,55,0.04) 0%,transparent 65%);pointer-events:none}
+.contact-card h2{font-size:1.6rem;font-weight:800;color:#fff;margin:.75rem 0 .75rem;letter-spacing:-.02em}
+.contact-card p{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:2rem}
+.email-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.12);border-radius:10px;padding:.75rem 1rem;margin-bottom:1.25rem;text-align:left}
+.email-row code{font-size:11px;color:var(--gold);font-family:'Space Grotesk',monospace;flex:1;word-break:break-all}
+.btn-copy{font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;flex-shrink:0;transition:color .2s}
+.btn-copy:hover{color:var(--gold)}
+.contact-links{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+
+/* ══════════ FOOTER ══════════ */
+footer{position:relative;z-index:10;text-align:center;padding:3rem 1.5rem;border-top:1px solid rgba(212,175,55,0.08);font-size:10px;color:var(--muted);letter-spacing:.08em}
+footer span{color:var(--gold)}
+
+/* ══════════ REDUCED MOTION ══════════ */
+@media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .volley-bounce,.badge-dot,#badge-dot{animation:none!important}
+    #cursor-ring{transition:none}
+    .bar-fill{transition:none}
+    .p-card:hover,.skill-card:hover{transform:none}
+    .t-dot{animation:none;box-shadow:0 0 0 4px rgba(212,175,55,0.1),0 0 18px rgba(212,175,55,0.5)}
+}
+
+/* ══════════ LIGHT MODE ══════════ */
+html.light-mode{background:#f0f0e8!important}
+html.light-mode body{background:#f0f0e8!important;color:#1a1a2e!important}
+html.light-mode nav{background:rgba(240,240,232,0.92)!important;border-bottom-color:rgba(212,175,55,0.2)!important}
+html.light-mode h1,html.light-mode h2,html.light-mode h3{color:#0c0c1a!important}
+html.light-mode .skill-card,html.light-mode .t-card,html.light-mode .p-card,html.light-mode .stat-card,html.light-mode .log-box,html.light-mode .contact-card,html.light-mode .email-row{background:rgba(255,255,255,0.75)!important;border-color:rgba(212,175,55,0.2)!important}
+html.light-mode .tag,.light-mode .p-badge{background:rgba(212,175,55,0.1)!important}
+html.light-mode section{border-top-color:rgba(212,175,55,0.15)!important}
+html.light-mode footer{border-top-color:rgba(212,175,55,0.15)!important}
+/* ══════════ SOCIAL GRID ══════════ */
+.social-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:1.25rem 0}
+@media(min-width:480px){.social-grid{grid-template-columns:repeat(4,1fr)}}
+.social-card{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:1.1rem .75rem;border-radius:14px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);text-decoration:none;transition:border-color .3s,box-shadow .3s,transform .3s;position:relative;overflow:hidden}
+.social-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(212,175,55,0.04) 0%,transparent 70%);pointer-events:none;opacity:0;transition:opacity .3s}
+.social-card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,0.3);box-shadow:0 0 30px rgba(212,175,55,0.07),0 16px 40px rgba(0,0,0,0.3)}
+.social-card:hover::before{opacity:1}
+.social-icon-wrap{width:48px;height:48px;border-radius:14px;border:1px solid;display:flex;align-items:center;justify-content:center;transition:box-shadow .3s}
+.social-card:hover .social-icon-wrap{box-shadow:0 0 20px rgba(212,175,55,0.15)}
+.social-name{font-size:10.5px;font-weight:700;color:#fff;letter-spacing:.04em}
+.social-handle{font-size:9.5px;color:var(--muted);letter-spacing:.02em;text-align:center;word-break:break-all}
+
+    </style>
 </head>
-<body class="bg-[#090d16] text-slate-400 font-sans antialiased selection:bg-cyan-500/20 selection:text-cyan-300">
+<body>
 
-    <a href="#intro" class="skip-link">Lompat ke konten utama</a>
+<a href="#intro" class="skip-link">Lompat ke konten utama</a>
+<div id="cursor" class="hidden-mobile"></div>
+<div id="cursor-ring" class="hidden-mobile"></div>
+<canvas id="canvas"></canvas>
 
-    <div id="cursor" class="hidden md:block"></div>
-    <div id="cursor-ring" class="hidden md:block"></div>
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#intro" class="nav-logo">niko<span>.dev</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#my-skills">Keahlian</a></li>
+            <li><a href="#experience">Pengalaman</a></li>
+            <li><a href="#my-works">Proyek</a></li>
+            <li><a href="#contact">Kontak</a></li>
+            <li>
+                <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle tema">
+                    <span id="theme-icon">☀️</span>
+                </button>
+            </li>
+        </ul>
+        <button id="btn-menu" aria-label="Buka menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="hamburger"><span></span><span></span><span></span></span>
+        </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <ul>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#my-skills">Keahlian</a></li>
+            <li><a href="#experience">Pengalaman</a></li>
+            <li><a href="#my-works">Proyek</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <canvas id="canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+<!-- ══ HERO ══ -->
+<section id="intro" class="hero">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
 
-    <nav class="sticky top-0 z-50 backdrop-blur-md bg-[#090d16]/70 border-b border-slate-900/60 px-6 py-4">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <a href="#intro" class="text-base font-bold tracking-tight text-white">
-                niko<span class="text-cyan-400">.dev</span>
-            </a>
-
-            <ul class="hidden md:flex items-center gap-7 text-[11px] uppercase tracking-widest font-medium text-slate-400">
-                <li><a href="#about" class="hover:text-cyan-400 transition-colors">Tentang</a></li>
-                <li><a href="#my-skills" class="hover:text-cyan-400 transition-colors">Keahlian</a></li>
-                <li><a href="#my-works" class="hover:text-cyan-400 transition-colors">Proyek</a></li>
-                <li><a href="#contact" class="hover:text-cyan-400 transition-colors">Kontak</a></li>
-            </ul>
-
-            <button id="btn-menu" class="md:hidden relative w-9 h-9 flex items-center justify-center text-slate-300" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu">
-                <span class="hamburger"><span></span><span></span><span></span></span>
-            </button>
+    <div class="reveal" style="flex:1;min-width:280px">
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Aktif Belajar &amp; Berkembang
         </div>
-
-        <div id="mobile-menu" class="mobile-menu md:hidden" aria-hidden="true">
-            <ul class="flex flex-col gap-1 px-6 pt-4 pb-5 text-xs uppercase tracking-widest font-medium text-slate-400">
-                <li><a href="#about" class="block py-2.5 hover:text-cyan-400 transition-colors">Tentang</a></li>
-                <li><a href="#my-skills" class="block py-2.5 hover:text-cyan-400 transition-colors">Keahlian</a></li>
-                <li><a href="#my-works" class="block py-2.5 hover:text-cyan-400 transition-colors">Proyek</a></li>
-                <li><a href="#contact" class="block py-2.5 hover:text-cyan-400 transition-colors">Kontak</a></li>
-            </ul>
+        <h1 class="hero-title">
+            <span id="dynamic-greeting">Halo</span>, saya<br>
+            <span class="gold-gradient">Niko Afriyanto</span>
+        </h1>
+        <p class="hero-sub">Web Developer · Forex Trader · Student</p>
+        <p class="hero-desc">Pelajar SMK Ma'arif Walisongo Kajoran yang mendalami pengembangan web dan analisis pasar forex. Membangun hal-hal yang berguna sambil terus belajar dan berkembang.</p>
+        <div class="hero-buttons">
+            <a href="#my-works" class="btn-primary">Lihat Proyek →</a>
+            <a href="#contact" class="btn-secondary">Hubungi Saya</a>
         </div>
-    </nav>
+        <p class="scroll-hint">Scroll untuk lanjut</p>
+    </div>
 
-    <section id="intro" class="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-16 md:flex md:items-center md:justify-between gap-12 min-h-[80vh] scroll-mt-20">
-        <div class="hero-bg-orb orb1"></div>
-        <div class="hero-bg-orb orb2"></div>
-
-        <div class="md:w-3/5 text-left relative z-10 reveal">
-            <div class="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-400 text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-md mb-6 border border-cyan-500/20">
-                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> Lagi Seru Belajar
+    <div class="reveal" style="transition-delay:120ms;flex-shrink:0">
+        <div class="log-box">
+            <div class="log-dots">
+                <span class="log-dot"></span>
+                <span class="log-dot"></span>
+                <span class="log-dot"></span>
             </div>
-
-            <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 leading-tight">
-                Halo, saya <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Niko Afriyanto</span>
-            </h1>
-            <p class="text-sm text-cyan-400 mb-5 font-medium tracking-wider uppercase">siswa SMK MA'ARIF WALISONGO SIDOWANGI</p>
-
-            <p class="text-slate-400 leading-relaxed text-[13px] mb-8 max-w-md">
-
-            <div class="flex flex-wrap items-center gap-3">
-                <a href="#my-works" class="bg-cyan-400 text-slate-950 hover:bg-cyan-300 px-5 py-2.5 rounded-lg font-bold transition-colors text-[11px] uppercase tracking-wider">
-                    Lihat Proyek
-                </a>
-                <a href="#contact" class="bg-slate-900 text-cyan-400 hover:bg-slate-800 border border-cyan-500/20 px-5 py-2.5 rounded-lg font-bold transition-colors text-[11px] uppercase tracking-wider">
-                    Hubungi Saya
-                </a>
+            <div class="log-emoji">
+                <span class="volley-bounce" style="display:block;text-align:center">🏐</span>
             </div>
-
-            <a href="#about" class="hidden md:inline-flex items-center gap-2 mt-14 text-[10px] uppercase tracking-widest text-slate-600 hover:text-cyan-400 transition-colors">
-                Scroll
-                <span class="scroll-chevron">↓</span>
-            </a>
-        </div>
-
-        <div class="mt-12 md:mt-0 md:w-2/5 flex justify-center relative z-10 reveal" style="transition-delay: 120ms;">
-            <div class="relative w-60 h-60 md:w-64 md:h-64 border border-slate-800/60 rounded-xl p-4 bg-slate-900/10 backdrop-blur-sm shadow-2xl flex items-center justify-center">
-                <div class="w-full h-full rounded-lg bg-slate-950 flex flex-col items-center justify-between border border-slate-900/80 p-4">
-                    <div class="w-full flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-slate-700"></span>
-                        <span class="w-2 h-2 rounded-full bg-slate-700"></span>
-                        <span class="w-2 h-2 rounded-full bg-slate-700"></span>
-                    </div>
-                    <span class="text-5xl volley-bounce">🏐</span>
-                    <div class="w-full text-left">
-                        <p id="log-line" class="text-[10px] text-cyan-400 font-medium h-4 leading-4 truncate"></p>
-                        <span class="text-[10px] text-slate-500 tracking-widest font-medium uppercase">NIKO_AFRIYANTO.LOG</span>
-                    </div>
-                </div>
+            <div class="log-bottom">
+                <p id="log-line"></p>
+                <span>NIKO_AFRIYANTO.LOG</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="about" class="relative z-10 max-w-5xl mx-auto px-6 py-16 border-t border-slate-900/80 scroll-mt-20">
-        <div class="reveal mb-10">
-            <span class="text-[11px] font-bold text-cyan-400 tracking-widest uppercase">// Tentang Saya</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mt-2">Lagi belajar bikin web yang rapi &amp; aman</h2>
+<!-- ══ ABOUT ══ -->
+<section id="about" class="section section-divider">
+    <div class="reveal" style="margin-bottom:2.5rem">
+        <span class="eyebrow">// Tentang Saya</span>
+        <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-top:.6rem;letter-spacing:-.02em">Lagi belajar bikin web yang rapi &amp; aman</h2>
+    </div>
+    <div class="about-grid">
+        <div class="about-text reveal">
+            <p>Siswa SMK Ma'arif Walisongo Kajoran jurusan Pengembangan Perangkat Lunak dan Gim (PPLG). Saya tertarik pada dunia trading forex dan pengembangan website sejak awal masuk sekolah.</p>
+            <p>Dalam trading, saya mempelajari analisis teknikal menggunakan Support &amp; Resistance dan Smart Money Concept (SMC). Dalam web development, saya menguasai HTML, CSS, JavaScript, PHP, Laravel, dan MySQL.</p>
+            <p style="color:var(--muted)">Saya lebih mudah belajar lewat praktik langsung — setiap materi yang dipelajari langsung diterapkan ke proyek nyata. Git &amp; GitHub saya gunakan untuk mendokumentasikan proses belajar dan berkolaborasi.</p>
+            <p style="color:var(--muted)">Di luar coding, bermain bola voli 🏐 adalah cara saya melepas penat sambil melatih kerja tim dan komunikasi.</p>
         </div>
-
-        <div class="grid md:grid-cols-5 gap-10 items-start">
-            <div class="md:col-span-3 space-y-4 text-slate-400 leading-relaxed text-[13px] reveal">
-                <p>
-                    siswa SMK Ma'arif Walisongo Sidowangi yang memiliki ketertarikan di bidang Rekayasa Perangkat Lunak. Ketertarikan tersebut berawal dari rasa penasaran tentang bagaimana sebuah website dibuat dan mampu mengelola data dengan cepat serta aman.
-                </p>
-                <p>
-                    Saat ini saya sedang mempelajari ekosistem JavaScript. Di sisi frontend, saya menggunakan Tailwind CSS untuk membangun tampilan yang responsif dan nyaman digunakan di berbagai perangkat. Selain itu, saya juga mulai mendalami pengembangan backend untuk memahami cara membangun API yang terstruktur dan andal.
-                </p>
-                <p class="text-slate-500">
-                   Saya lebih mudah belajar melalui praktik langsung. Karena itu, saya selalu mencoba menerapkan setiap materi yang dipelajari ke dalam proyek sederhana. Melalui Git dan GitHub, saya mendokumentasikan proses belajar dan perkembangan proyek yang saya kerjakan agar lebih terorganisir serta menjadi bekal untuk bekerja dalam tim di masa depan.
-                </p>
-            </div>
-
-            <div class="md:col-span-2 grid grid-cols-3 gap-4 reveal" style="transition-delay: 100ms;">
+        <div class="reveal" style="transition-delay:100ms">
+            <div class="stats-grid">
                 <div class="stat-card">
-                    <span class="stat-number" data-count-target="2">0</span>
-                    <span class="stat-label">Proyek Latihan</span>
+                    <span class="stat-num" data-count-target="2">0</span>
+                    <span class="stat-label">Proyek</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number" data-count-target="6">0</span>
-                    <span class="stat-label">Tech Stack</span>
+                    <span class="stat-num" data-count-target="10">0</span>
+                    <span class="stat-label">Skills</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number stat-emoji">🏐</span>
-                    <span class="stat-label">Hobi Andalan</span>
-                    <p>
-                        Bermain bola voli adalah salah satu hobi yang paling saya nikmati. Selain menyenangkan, olahraga ini membantu saya tetap aktif, menjaga kondisi tubuh, dan mengisi waktu luang dengan kegiatan yang positif.     
-                    </p>
+                    <span class="stat-num stat-emoji">🏐</span>
+                    <span class="stat-label">Hobi</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="my-skills" class="relative z-10 max-w-5xl mx-auto px-6 py-16 border-t border-slate-900/80 scroll-mt-20">
-        <div class="reveal mb-10 max-w-xl">
-            <span class="text-[11px] font-bold text-cyan-400 tracking-widest uppercase">// Keahlian</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mt-2 mb-3">Apa yang sedang saya kuasai</h2>
-            <p class="text-slate-500 text-[13px] leading-relaxed">Dari tampilan depan sampai mulai ngulik backend — ini stack yang sehari-hari saya pakai buat latihan.</p>
-        </div>
-
-        <div class="grid sm:grid-cols-2 gap-5">
-            <div class="reveal skill-card">
-                <div class="skill-icon">🎨</div>
-                <h3 class="text-sm font-bold text-white mb-1.5">Frontend Development</h3>
-                <p class="text-slate-400 text-xs leading-relaxed mb-4">Membangun tampilan yang responsif dan rapi, dari layar HP sampai desktop.</p>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">Tailwind CSS</span>
-                    <span class="skill-tag">JavaScript (ES6)</span>
-                </div>
+<!-- ══ SKILLS ══ -->
+<section id="my-skills" class="section section-divider">
+    <div class="reveal" style="margin-bottom:2.5rem;max-width:520px">
+        <span class="eyebrow">// Keahlian</span>
+        <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-top:.6rem;letter-spacing:-.02em">Stack &amp; Kemampuan</h2>
+        <p style="font-size:13px;color:var(--muted);margin-top:.6rem;line-height:1.7">Dua dunia yang terus saya asah — dari kode ke pasar, dari logika ke strategi.</p>
+    </div>
+    <div class="skills-grid">
+        <!-- Web Dev -->
+        <div class="skill-card reveal">
+            <div class="skill-icon-box">⌨️</div>
+            <h3>Web Development</h3>
+            <p>Antarmuka responsif dari nol sampai production-ready.</p>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>HTML &amp; CSS</span><span>85%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
             </div>
-
-            <div class="reveal skill-card" style="transition-delay: 80ms;">
-                <div class="flex items-center justify-between mb-3.5">
-                    <div class="skill-icon !mb-0">🗄️</div>
-                    <span class="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded uppercase tracking-wider">Sedang Dipelajari</span>
-                </div>
-                <h3 class="text-sm font-bold text-white mb-1.5">Backend Development</h3>
-                <p class="text-slate-400 text-xs leading-relaxed mb-4">Mulai ngulik cara bikin API yang aman dan terstruktur dengan Node.js.</p>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">REST API</span>
-                </div>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>JavaScript</span><span>72%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="72"></div></div>
             </div>
-
-            <div class="reveal skill-card" style="transition-delay: 160ms;">
-                <div class="skill-icon">🔧</div>
-                <h3 class="text-sm font-bold text-white mb-1.5">Version Control &amp; Tools</h3>
-                <p class="text-slate-400 text-xs leading-relaxed mb-4">Mendokumentasikan progres belajar lewat Git biar histori kode tetap rapi.</p>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">GitHub</span>
-                </div>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>PHP &amp; Laravel</span><span>60%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="60"></div></div>
             </div>
-
-            <div class="reveal skill-card" style="transition-delay: 240ms;">
-                <div class="skill-icon">🧠</div>
-                <h3 class="text-sm font-bold text-white mb-1.5">Cara Belajar</h3>
-                <p class="text-slate-400 text-xs leading-relaxed mb-4">Learning by doing — coba dulu, gali masalahnya, baru paham konsepnya.</p>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="skill-tag">Practice-Driven</span>
-                    <span class="skill-tag">Dokumentasi</span>
-                </div>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>MySQL</span><span>65%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="65"></div></div>
+            </div>
+            <div style="margin-top:.9rem">
+                <span class="tag">Bootstrap</span>
+                <span class="tag">Tailwind</span>
+                <span class="tag">Git</span>
+                <span class="tag">XAMPP</span>
             </div>
         </div>
-    </section>
-
-    <section id="my-works" class="relative z-10 max-w-5xl mx-auto px-6 py-16 border-t border-slate-900/80 scroll-mt-20">
-        <div class="reveal mb-10 max-w-xl">
-            <span class="text-[11px] font-bold text-cyan-400 tracking-widest uppercase">// Proyek</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mt-2 mb-3">Eksperimen Kode</h2>
-            <p class="text-slate-500 text-[13px] leading-relaxed">Proyek latihan yang saya bangun buat ngerasain langsung siklus development dari nol.</p>
+        <!-- Backend -->
+        <div class="skill-card reveal" style="transition-delay:80ms">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem">
+                <div class="skill-icon-box" style="margin-bottom:0">🛠️</div>
+                <span class="badge-learning">Dipelajari</span>
+            </div>
+            <h3>Backend &amp; Tools</h3>
+            <p>API terstruktur &amp; workflow developer yang rapi.</p>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>Node.js</span><span>45%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="45"></div></div>
+            </div>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>REST API</span><span>55%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="55"></div></div>
+            </div>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>GitHub</span><span>75%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="75"></div></div>
+            </div>
+            <div style="margin-top:.9rem">
+                <span class="tag">VS Code</span>
+                <span class="tag">Postman</span>
+                <span class="tag">JWT</span>
+            </div>
         </div>
+        <!-- Trading -->
+        <div class="skill-card reveal" style="transition-delay:160ms">
+            <div class="skill-icon-box">📈</div>
+            <h3>Forex Trading</h3>
+            <p>Analisis pasar dengan metodologi institusional.</p>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>Support &amp; Resistance</span><span>78%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="78"></div></div>
+            </div>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>Smart Money Concept</span><span>70%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="70"></div></div>
+            </div>
+            <div class="bar-wrap">
+                <div class="bar-label"><span>Risk Management</span><span>75%</span></div>
+                <div class="bar-track"><div class="bar-fill" data-width="75"></div></div>
+            </div>
+            <div style="margin-top:.9rem">
+                <span class="tag">TradingView</span>
+                <span class="tag">MetaTrader 5</span>
+                <span class="tag">SMC</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <div class="flex flex-col gap-4">
-            <a href="#" class="reveal project-row" aria-label="Lihat detail Sistem Informasi Perpustakaan (tautan repo segera ditambahkan)">
-                <span class="project-number">01</span>
-                <div class="flex-1">
-                    <div class="flex items-center gap-2 mb-1.5">
-                        <h3 class="text-base font-bold text-white">Sistem Informasi Perpustakaan</h3>
-                        <span class="text-[10px] text-slate-600">Fullstack / Web</span>
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience" class="section section-divider">
+    <div class="reveal" style="margin-bottom:2.5rem">
+        <span class="eyebrow">// Pengalaman</span>
+        <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-top:.6rem;letter-spacing:-.02em">Rekam Jejak</h2>
+        <p style="font-size:13px;color:var(--muted);margin-top:.6rem">Perjalanan belajar dari bangku sekolah hingga pasar finansial.</p>
+    </div>
+    <div class="timeline reveal">
+        <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="t-card">
+                <div class="t-head">
+                    <div>
+                        <p class="t-role">Independent Forex Trader</p>
+                        <p class="t-company">Self-Employed · Remote</p>
                     </div>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-3 max-w-xl">
-                        Aplikasi manajemen perpustakaan untuk pendataan buku, manajemen inventaris, serta otomatisasi pencatatan transaksi peminjaman dan pengembalian buku secara real-time.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">Tailwind CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                    </div>
+                    <span class="t-date">2024 — Sekarang</span>
                 </div>
-                <span class="project-link-icon" aria-hidden="true">↗</span>
+                <div>
+                    <p class="t-bullet">Menganalisis pergerakan harga menggunakan Support &amp; Resistance dan Smart Money Concept (SMC).</p>
+                    <p class="t-bullet">Mengoperasikan TradingView dan MetaTrader 5 untuk riset dan eksekusi pasar secara real-time.</p>
+                    <p class="t-bullet">Menerapkan manajemen risiko pada setiap transaksi untuk menjaga konsistensi portofolio.</p>
+                    <p class="t-bullet">Membangun disiplin psikologi trading sebagai fondasi pengambilan keputusan rasional.</p>
+                </div>
+                <div class="t-tags">
+                    <span class="tag">SMC</span>
+                    <span class="tag">S&amp;R</span>
+                    <span class="tag">MetaTrader 5</span>
+                    <span class="tag">TradingView</span>
+                    <span class="tag">Risk Management</span>
+                </div>
+            </div>
+        </div>
+        <div class="t-item">
+            <div class="t-dot" style="border-color:#818cf8;box-shadow:0 0 0 4px rgba(129,140,248,0.1),0 0 18px rgba(129,140,248,0.5);animation-name:none"></div>
+            <div class="t-card">
+                <div class="t-head">
+                    <div>
+                        <p class="t-role">Siswa Rekayasa Perangkat Lunak</p>
+                        <p class="t-company" style="color:#818cf8">SMK Ma'arif Walisongo Kajoran</p>
+                    </div>
+                    <span class="t-date">2024 — 2027</span>
+                </div>
+                <div>
+                    <p class="t-bullet">Mempelajari dasar-dasar pemrograman web: HTML, CSS, JavaScript, PHP, dan MySQL.</p>
+                    <p class="t-bullet">Membangun proyek latihan fullstack menggunakan Laravel dan Bootstrap.</p>
+                    <p class="t-bullet">Mengelola version control menggunakan Git &amp; GitHub secara aktif.</p>
+                    <p class="t-bullet">Jurusan Pengembangan Perangkat Lunak dan Gim (PPLG) — fokus aplikasi web modern.</p>
+                </div>
+                <div class="t-tags">
+                    <span class="tag" style="color:#a5b4fc;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.08)">HTML</span>
+                    <span class="tag" style="color:#a5b4fc;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.08)">PHP</span>
+                    <span class="tag" style="color:#a5b4fc;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.08)">Laravel</span>
+                    <span class="tag" style="color:#a5b4fc;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.08)">MySQL</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PORTFOLIO ══ -->
+<section id="my-works" class="section section-divider">
+    <div class="reveal" style="margin-bottom:2.5rem;max-width:520px">
+        <span class="eyebrow">// Proyek</span>
+        <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-top:.6rem;letter-spacing:-.02em">Portfolio Karya</h2>
+        <p style="font-size:13px;color:var(--muted);margin-top:.6rem;line-height:1.7">Eksperimen kode yang dibangun untuk menguji pemahaman langsung di dunia nyata.</p>
+    </div>
+    <div class="filter-row reveal">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="fullstack">Fullstack</button>
+        <button class="filter-btn" data-filter="backend">Backend</button>
+    </div>
+    <div class="portfolio-grid">
+        <div class="p-card reveal" data-category="fullstack">
+            <div class="p-thumb">
+                📚
+                <div class="p-thumb-shine"></div>
+            </div>
+            <div class="p-body">
+                <div class="p-badges">
+                    <span class="p-badge">Fullstack</span>
+                    <span class="p-badge p-badge-live">● Live</span>
+                </div>
+                <h3>Sistem Informasi Perpustakaan</h3>
+                <p>Aplikasi manajemen perpustakaan — pendataan buku, inventaris, dan pencatatan transaksi peminjaman secara real-time.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:1.1rem">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">Tailwind</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">PHP</span>
+                </div>
+                <div class="p-links">
+                    <a href="#" class="p-btn">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        GitHub
+                    </a>
+                    <a href="#" class="p-btn p-btn-muted">Demo ↗</a>
+                </div>
+            </div>
+        </div>
+        <div class="p-card reveal" data-category="backend" style="transition-delay:100ms">
+            <div class="p-thumb" style="background:rgba(7,8,20,.6)">
+                🔐
+                <div class="p-thumb-shine"></div>
+            </div>
+            <div class="p-body">
+                <div class="p-badges">
+                    <span class="p-badge">Backend</span>
+                    <span class="p-badge p-badge-node">Node / Express</span>
+                </div>
+                <h3>Secure REST API System</h3>
+                <p>Arsitektur backend Node.js dengan autentikasi JWT — diuji Postman untuk keamanan pertukaran data aplikasi.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:1.1rem">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Express</span>
+                    <span class="tag">JWT</span>
+                    <span class="tag">Postman</span>
+                </div>
+                <div class="p-links">
+                    <a href="#" class="p-btn">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="section section-divider">
+    <div class="contact-card reveal">
+        <span class="eyebrow" style="justify-content:center">// Kontak</span>
+        <h2>Yuk, Ngobrol Bareng!</h2>
+        <p>Punya proyek belajar bareng, mau kasih koreksi kode, atau cuma mau diskusi soal voli? Saya selalu terbuka.</p>
+
+        <div class="email-row">
+            <code id="contact-email">nikoafriyanto020@gmail.com</code>
+            <button id="btn-copy-email" class="btn-copy">Salin</button>
+        </div>
+
+        <!-- SOCIAL GRID -->
+        <div class="social-grid">
+            <!-- Email -->
+            <a href="mailto:nikoafriyanto020@gmail.com" class="social-card" aria-label="Email">
+                <div class="social-icon-wrap" style="background:rgba(234,67,53,0.1);border-color:rgba(234,67,53,0.25)">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ea4335" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>
+                </div>
+                <span class="social-name">Email</span>
+                <span class="social-handle">nikoafriyanto020@gmail.com</span>
             </a>
 
-            <a href="#" class="reveal project-row" style="transition-delay: 80ms;" aria-label="Lihat detail Secure REST API System (tautan repo segera ditambahkan)">
-                <span class="project-number">02</span>
-                <div class="flex-1">
-                    <div class="flex items-center gap-2 mb-1.5">
-                        <h3 class="text-base font-bold text-white">Secure REST API System</h3>
-                        <span class="text-[10px] text-slate-600">Node / Express</span>
-                    </div>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-3 max-w-xl">
-                        Arsitektur backend menggunakan Node.js/Express dengan autentikasi berbasis Token JWT yang telah lolos uji Postman untuk mengamankan pertukaran data aplikasi.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express</span>
-                        <span class="skill-tag">JWT</span>
-                    </div>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/6285848658854" target="_blank" rel="noopener" class="social-card" aria-label="WhatsApp">
+                <div class="social-icon-wrap" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.25)">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12c0 1.77.466 3.428 1.276 4.868L2 22l5.28-1.246A9.953 9.953 0 0 0 12.004 22C17.53 22 22 17.523 22 12S17.53 2 12.004 2z"/></svg>
                 </div>
-                <span class="project-link-icon" aria-hidden="true">↗</span>
+                <span class="social-name">WhatsApp</span>
+                <span class="social-handle">085848658854</span>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/n_advisori_" target="_blank" rel="noopener" class="social-card" aria-label="Instagram">
+                <div class="social-icon-wrap" style="background:rgba(225,48,108,0.1);border-color:rgba(225,48,108,0.25)">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="1.8">
+                        <defs>
+                            <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#f09433"/>
+                                <stop offset="25%" stop-color="#e6683c"/>
+                                <stop offset="50%" stop-color="#dc2743"/>
+                                <stop offset="75%" stop-color="#cc2366"/>
+                                <stop offset="100%" stop-color="#bc1888"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="2" width="20" height="20" rx="5"/>
+                        <circle cx="12" cy="12" r="4.5"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="#dc2743" stroke="none"/>
+                    </svg>
+                </div>
+                <span class="social-name">Instagram</span>
+                <span class="social-handle">@n_advisori_</span>
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://tiktok.com/@ur.nko04" target="_blank" rel="noopener" class="social-card" aria-label="TikTok">
+                <div class="social-icon-wrap" style="background:rgba(255,0,80,0.08);border-color:rgba(255,0,80,0.2)">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+                </div>
+                <span class="social-name">TikTok</span>
+                <span class="social-handle">@ur.nko04</span>
             </a>
         </div>
-    </section>
 
-    <section id="contact" class="relative z-10 max-w-5xl mx-auto px-6 py-16 border-t border-slate-900/80 scroll-mt-20">
-        <div class="reveal max-w-lg mx-auto text-center">
-            <span class="text-[11px] font-bold text-cyan-400 tracking-widest uppercase">// Kontak</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mt-2 mb-3">Yuk, Ngobrol Bareng!</h2>
-            <p class="text-slate-400 text-[13px] leading-relaxed mb-8">
-                Punya proyek belajar bareng, mau kasih koreksi kode, atau cuma mau diskusi soal voli? Kotak masuk saya selalu terbuka.
-            </p>
-
-            <div class="flex items-center justify-between gap-2 bg-slate-900/30 border border-slate-800/80 rounded-lg px-4 py-3 mb-4 text-left">
-                <code id="contact-email" class="text-xs text-cyan-300">nikoafriyanto020@gmail.com</code>
-                <button id="btn-copy-email" class="text-[10px] uppercase font-bold text-slate-400 hover:text-cyan-400 transition-colors shrink-0">Salin</button>
-            </div>
-
-            <div class="flex flex-wrap items-center justify-center gap-3">
-                <a href="mailto:nikoafriyanto@gmail.com" class="bg-cyan-400 text-slate-950 hover:bg-cyan-300 px-5 py-2.5 rounded-lg font-bold transition-colors text-[11px] uppercase tracking-wider">
-                    Kirim Email
-                </a>
-                <a href="#" class="bg-slate-900 text-slate-400 hover:text-cyan-400 border border-slate-800/80 px-5 py-2.5 rounded-lg font-bold transition-colors text-[11px] uppercase tracking-wider">
-                    GitHub
-                </a>
-            </div>
+        <div class="contact-links" style="margin-top:1.5rem">
+            <a href="mailto:nikoafriyanto020@gmail.com" class="btn-primary">Kirim Email →</a>
+            <a href="https://wa.me/6285848658854" target="_blank" rel="noopener" class="btn-secondary">Chat WhatsApp</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="relative z-10 text-center py-12 text-slate-600 text-[10px] border-t border-slate-900/80">
-        <p>&copy; 2026 niko.dev — Dibuat dengan 🏐 &amp; rasa penasaran oleh Niko Afriyanto.</p>
-    </footer>
+<footer>
+    <p>&copy; 2026 <span>niko.dev</span> — Dibuat dengan 🏐 &amp; rasa penasaran oleh <span>Niko Afriyanto</span></p>
+</footer>
 
-    <script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ── GREETING ── */
+    const greetEl = document.getElementById('dynamic-greeting');
+    if (greetEl) {
+        const h = new Date().getHours();
+        greetEl.textContent = h>=5&&h<11 ? 'Selamat pagi' : h>=11&&h<15 ? 'Selamat siang' : h>=15&&h<18 ? 'Selamat sore' : 'Selamat malam';
+    }
+
+    /* ── CURSOR ── */
+    const cur = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    if (cur && ring && !reduceMotion) {
+        document.addEventListener('mousemove', e => {
+            cur.style.left = e.clientX+'px'; cur.style.top = e.clientY+'px';
+            ring.style.left = e.clientX+'px'; ring.style.top = e.clientY+'px';
+        });
+        cur.style.display='block'; ring.style.display='block';
+    }
+
+    /* ── PARTICLES ── */
+    const canvas = document.getElementById('canvas');
+    if (canvas && !reduceMotion) {
+        const ctx = canvas.getContext('2d');
+        let pts = [];
+        const resize = () => { canvas.width=innerWidth; canvas.height=innerHeight; };
+        resize(); window.addEventListener('resize', () => { resize(); init(); });
+        const n = () => innerWidth < 640 ? 20 : 45;
+        class P {
+            constructor() { this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height; this.s=Math.random()*1.5+.5; this.vx=Math.random()*.35-.17; this.vy=Math.random()*.35-.17; }
+            u() { this.x+=this.vx; this.y+=this.vy; if(this.x>canvas.width)this.x=0; if(this.x<0)this.x=canvas.width; if(this.y>canvas.height)this.y=0; if(this.y<0)this.y=canvas.height; }
+            d() { ctx.fillStyle='rgba(212,175,55,0.12)'; ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fill(); }
+        }
+        const init = () => { pts=[]; for(let i=0;i<n();i++) pts.push(new P()); };
+        let raf;
+        const loop = () => { ctx.clearRect(0,0,canvas.width,canvas.height); pts.forEach(p=>{p.u();p.d();}); raf=requestAnimationFrame(loop); };
+        document.addEventListener('visibilitychange',()=>{ if(document.hidden){cancelAnimationFrame(raf);raf=null;}else if(!raf)loop(); });
+        init(); loop();
+    }
+
+    /* ── MOBILE MENU ── */
+    const btnMenu = document.getElementById('btn-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (btnMenu && mobileMenu) {
+        const close = () => { mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); btnMenu.setAttribute('aria-expanded','false'); };
+        btnMenu.addEventListener('click', () => {
+            const open = mobileMenu.classList.toggle('open');
+            mobileMenu.setAttribute('aria-hidden', open?'false':'true');
+            btnMenu.setAttribute('aria-expanded', open?'true':'false');
+        });
+        mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+    }
+
+    /* ── REVEAL ── */
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target);} });
+        }, { threshold:.12, rootMargin:'0px 0px -30px 0px' });
+        reveals.forEach(el=>obs.observe(el));
+    } else { reveals.forEach(el=>el.classList.add('in-view')); }
+
+    /* ── SKILL BARS ── */
+    const bars = document.querySelectorAll('.bar-fill[data-width]');
+    if ('IntersectionObserver' in window && bars.length) {
+        const bObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.style.width = e.target.getAttribute('data-width')+'%';
+                    setTimeout(()=>e.target.classList.add('animated'), 900);
+                    bObs.unobserve(e.target);
+                }
+            });
+        }, { threshold:.3 });
+        bars.forEach(b=>bObs.observe(b));
+    } else { bars.forEach(b=>{ b.style.width=b.getAttribute('data-width')+'%'; b.classList.add('animated'); }); }
+
+    /* ── COUNTER ── */
+    document.querySelectorAll('[data-count-target]').forEach(el => {
+        const target = +el.getAttribute('data-count-target');
+        if (reduceMotion) { el.textContent=target; return; }
+        const obs = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                let cur=0; const step=Math.ceil(target/40);
+                const t = setInterval(()=>{ cur=Math.min(cur+step,target); el.textContent=cur; if(cur>=target)clearInterval(t); },40);
+                obs.disconnect();
+            }
+        },{ threshold:.5 });
+        obs.observe(el);
+    });
+
+    /* ── FILTER ── */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const pCards = document.querySelectorAll('.p-card[data-category]');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+            const f = btn.getAttribute('data-filter');
+            pCards.forEach(c => {
+                if (f==='all' || c.getAttribute('data-category')===f) c.classList.remove('hidden');
+                else c.classList.add('hidden');
+            });
+        });
+    });
+
+    /* ── LOG LINE ── */
+    const logLine = document.getElementById('log-line');
+    if (logLine) {
+        const logs = ['> git commit -m "fix bug"','> npm run dev','> serve_ball() -> ace!','> belajar.next_topic()','> status: masih ngulik'];
+        let i=0; logLine.textContent=logs[0];
+        if (!reduceMotion) {
+            logLine.style.transition='opacity .2s';
+            setInterval(()=>{ i=(i+1)%logs.length; logLine.style.opacity='0'; setTimeout(()=>{ logLine.textContent=logs[i]; logLine.style.opacity='1'; },200); },2800);
+        }
+    }
+
+    /* ── COPY EMAIL ── */
+    const btnCopy = document.getElementById('btn-copy-email');
+    const emailEl = document.getElementById('contact-email');
+    if (btnCopy && emailEl) {
+        btnCopy.addEventListener('click', async () => {
+            try { await navigator.clipboard.writeText(emailEl.textContent.trim()); const orig=btnCopy.textContent; btnCopy.textContent='Tersalin!'; setTimeout(()=>btnCopy.textContent=orig,1800); }
+            catch(e){}
+        });
+    }
+
+    /* ── THEME TOGGLE ── */
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    if (toggleBtn) {
+        if (localStorage.getItem('theme')==='light') { document.documentElement.classList.add('light-mode'); if(themeIcon)themeIcon.textContent='🌙'; }
+        toggleBtn.addEventListener('click', () => {
+            const isLight = document.documentElement.classList.toggle('light-mode');
+            localStorage.setItem('theme', isLight?'light':'dark');
+            if(themeIcon)themeIcon.textContent=isLight?'🌙':'☀️';
+        });
+    }
+
+    /* ── CLICK SOUND ── */
+    try {
+        const audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+        document.querySelectorAll('a,button').forEach(el => {
+            el.addEventListener('click', () => {
+                if (reduceMotion) return;
+                if (audioCtx.state==='suspended') audioCtx.resume();
+                const osc=audioCtx.createOscillator(); const gain=audioCtx.createGain();
+                osc.type='sine'; osc.frequency.setValueAtTime(520,audioCtx.currentTime);
+                gain.gain.setValueAtTime(.015,audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(.00001,audioCtx.currentTime+.06);
+                osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime+.06);
+            });
+        });
+    } catch(e){}
+});
+</script>
 </body>
 </html>
