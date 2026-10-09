@@ -12,9 +12,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<noscript><style>.rv{opacity:1!important;transform:none!important}#boot{display:none!important}</style></noscript>
+<script>setTimeout(function(){if(!window.__niko)document.documentElement.classList.add("js-fail")},6000)</script>
 </head>
 <body>
-<div id="boot" aria-hidden="true"><canvas id="lc"></canvas><div id="fl"></div><b>NA</b><span class="mono" id="bt">BOOTING PORTFOLIO... 0%</span><i><em id="be"></em></i></div>
+<div id="boot" aria-hidden="true"><canvas id="lc"></canvas><div id="fl"></div><b>NKO</b><span class="mono" id="bt">BOOTING PORTFOLIO... 0%</span><i><em id="be"></em></i></div>
 <div id="prog"></div><canvas id="bg"></canvas>
 
 <nav>
@@ -36,11 +38,26 @@
     <p class="lead">Siswa PPLG yang sedang belajar membangun website, memahami UI/UX, dan mengembangkan kemampuan melalui berbagai proyek.</p>
     <div class="btns"><a href="#works" class="btn p" data-mag>Lihat Proyek</a><a href="#contact" class="btn s" data-mag>Hubungi Saya</a></div>
   </div>
-  <div>
-    <!-- Foto: assets/images/niko-profile.jpeg (rasio 4:5). Jika file belum ada, tampil monogram. -->
-    <div class="ph" id="ph" data-tilt>
-      <div class="pi" id="pi"><img src="assets/images/niko-profile.jpeg" alt="Niko Afriyanto" width="800" height="1000" fetchpriority="high"><span class="fb">NA</span></div>
-      <span class="chip c1 mono">PPLG</span><span class="chip c2 mono">WEB DEV</span>
+  <div class="hero-art-wrap">
+    <div class="hero-suspension" aria-label="Foto profil Niko Afriyanto dalam frame futuristik">
+      <div class="rig">
+        <div class="mount" aria-hidden="true"></div>
+        <div class="suspension-cable cable-left" aria-hidden="true"></div>
+        <div class="suspension-cable cable-right" aria-hidden="true"></div>
+        <svg class="platform" viewBox="0 0 420 100" aria-hidden="true"><defs><radialGradient id="pgl"><stop offset="0" stop-color="#D4AF37" stop-opacity=".28"/><stop offset="1" stop-color="#D4AF37" stop-opacity="0"/></radialGradient></defs><ellipse cx="210" cy="52" rx="205" ry="46" fill="url(#pgl)"/><ellipse class="ring ring-one" cx="210" cy="50" rx="198" ry="40"/><ellipse class="ring ring-two" cx="210" cy="50" rx="150" ry="30"/><ellipse class="ring ring-three" cx="210" cy="50" rx="102" ry="20"/></svg>
+        <div class="portrait-tilt" id="ph" data-tilt data-tm="10">
+          <div class="portrait-shell">
+            <span class="p-shadow" aria-hidden="true"></span><span class="p-glow" aria-hidden="true"></span><span class="p-glow-hover" aria-hidden="true"></span>
+            <div class="portrait-frame frame-back" aria-hidden="true"></div>
+            <div class="portrait-frame frame-mid" aria-hidden="true"></div>
+            <div class="portrait-frame frame-front"><div class="frame-body">
+              <div class="pi" id="pi"><img src="assets/images/niko-profile.jpeg" alt="Niko Afriyanto" width="800" height="1000" fetchpriority="high"><span class="fb">NA</span></div>
+            </div></div>
+            <i class="anchor a-l" aria-hidden="true"></i><i class="anchor a-r" aria-hidden="true"></i>
+            <span class="chip c1 mono">PPLG</span><span class="chip c2 mono">WEB DEV</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -52,7 +69,7 @@
   <div class="ab">
     <div class="term rv"><div class="th"><i></i><i></i><i></i></div><div class="tb mono" id="tb"></div></div>
     <div class="sts rv">
-      <div class="st"><b data-c="2">0</b><span>Proyek</span></div>
+      <div class="st"><b data-c="3">0</b><span>Proyek</span></div>
       <div class="st"><b data-c="10">0</b><span>Teknologi</span></div>
       <div class="st"><b>3</b><span>Tahun SMK</span></div>
     </div>
@@ -96,6 +113,29 @@
   <span class="tag mono rv">// 04 PROYEK</span><h2 class="rv">PROYEK SAYA</h2>
   <div class="fl rv"><button class="fb2 on" data-f="all">Semua</button><button class="fb2" data-f="fullstack">Fullstack</button><button class="fb2" data-f="backend">Backend</button></div>
   <div class="grid">
+    <!-- FEATURED: VELLORA
+         Screenshot (taruh di assets/images/, urutan prioritas): vellora-home.jpg, vellora-products.jpg, vellora-detail.jpg, vellora-articles.jpg
+         Rasio ideal 16:10. Yang tidak ada otomatis dilewati; jika semuanya tidak ada tampil wordmark VELLORA. -->
+    <article class="card pc fp featured-project rv" data-c="fullstack" id="vellora">
+      <div class="fpv">
+        <div class="fpf" id="vf" data-shots='[["assets/images/vellora-home.jpg","Homepage"],["assets/images/vellora-products.jpg","Produk"],["assets/images/vellora-detail.jpg","Detail Produk"],["assets/images/vellora-articles.jpg","Artikel"]]'>
+          <img alt="Tampilan website VELLORA" width="1600" height="1000" decoding="async">
+          <div class="fph" aria-hidden="true"><b>VELLORA</b><span class="mono">LUXURY DIGITAL PLATFORM</span></div>
+        </div>
+        <div class="fpth" id="vth" hidden></div>
+      </div>
+      <div class="fpb">
+        <span class="st2 mono">FEATURED PROJECT</span>
+        <h3>VELLORA <span>— Luxury Digital Platform</span></h3>
+        <p>Website digital catalog dengan konsep visual luxury black &amp; gold yang dirancang untuk memberikan pengalaman pengguna yang modern, elegan, dan responsif.</p>
+        <div style="margin-top:.9rem"><span class="tg">Laravel</span><span class="tg">PHP</span><span class="tg">Blade</span><span class="tg">Tailwind CSS</span><span class="tg">JavaScript</span><span class="tg">MySQL</span></div>
+        <ul class="fpl">
+          <li>Premium black &amp; gold UI</li><li>Responsive design</li><li>Product catalog</li><li>Product detail</li><li>Article system</li><li>Product review</li><li>Authentication</li><li>Admin dashboard</li><li>CRUD product</li><li>CRUD article</li><li>Dynamic database content</li><li>Interactive visual effects</li>
+        </ul>
+        <!-- TODO: ganti href="#" dengan URL VELLORA yang asli (demo atau GitHub). Selama masih "#", tombol tidak melompat ke atas halaman. -->
+        <div class="btns"><a href="#" class="btn p" data-todo="vellora-url">Lihat Project</a></div>
+      </div>
+    </article>
     <div class="card pc rv" data-c="fullstack" data-tilt><div class="pt">LIB</div><span class="st2 mono">PROJECT LATIHAN</span><h3>Sistem Informasi Perpustakaan</h3>
       <p>Project latihan untuk mempraktikkan pendataan buku dan pencatatan peminjaman dalam sebuah aplikasi web.</p>
       <div style="margin-top:.8rem"><span class="tg">HTML5</span><span class="tg">Tailwind</span><span class="tg">JavaScript</span><span class="tg">PHP</span></div>

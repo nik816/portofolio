@@ -1,4 +1,5 @@
 (()=>{
+window.__niko=true;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
@@ -26,7 +27,16 @@ if(RM){boot.remove()}else{
 const h=new Date().getHours();$('#greet').textContent=h>=5&&h<11?'Selamat pagi':h<15&&h>=11?'Selamat siang':h>=15&&h<18?'Selamat sore':'Selamat malam';
 /* photo fallback */
 const pi=$('#pi'),im=pi.querySelector('img'),miss=()=>pi.classList.add('nop');
-im.addEventListener('error',miss);if(im.complete&&!im.naturalWidth)miss();
+im.addEventListener('error',miss);if(im && im.complete && !im.naturalWidth) miss();
+/* VELLORA: preview screenshot (hanya memakai file yang benar-benar ada) + placeholder URL */
+const vf=$('#vf');if(vf){const shots=JSON.parse(vf.dataset.shots),main=vf.querySelector('img'),th=$('#vth'),ok=[];let n=0;
+ const show=s=>{main.src=s.src;main.alt='Tampilan '+s.label+' website VELLORA';th.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.src===s.src))};
+ const fin=()=>{if(++n<shots.length)return;const L=ok.filter(Boolean);if(!L.length){vf.classList.add('nop');return}
+  if(L.length>1){th.hidden=false;L.forEach(s=>{const b=document.createElement('button');b.type='button';b.dataset.src=s.src;b.setAttribute('aria-label','Lihat '+s.label);
+   const i=document.createElement('img');i.src=s.src;i.alt='';i.loading='lazy';i.decoding='async';b.append(i);b.onclick=()=>show(s);th.append(b)})}
+  show(L[0])};
+ shots.forEach(([src,label],i)=>{const t=new Image();t.onload=()=>{ok[i]={src,label};fin()};t.onerror=fin;t.src=src})}
+$$('a[data-todo]').forEach(a=>a.addEventListener('click',e=>{if(a.getAttribute('href')==='#')e.preventDefault()}));
 /* marquee */
 const words=['HTML','CSS','JAVASCRIPT','PHP','LARAVEL','MYSQL','GIT','FIGMA','UI/UX','TRADING'];
 const row=words.map(w=>`<span>${w}</span>`).join('');$('#mt').innerHTML=row+row+row+row;
@@ -75,7 +85,7 @@ if(fine&&!RM){const cv2=document.createElement('canvas');cv2.id='cfx';document.b
    c.strokeStyle=`rgba(255,240,170,${r.l})`;c.lineWidth=2;c.beginPath();c.moveTo(r.x+Math.cos(r.a)*r.r*(1-r.l)*.6,r.y+Math.sin(r.a)*r.r*(1-r.l)*.6);c.lineTo(r.x+Math.cos(r.a)*r.r*(1.1-r.l),r.y+Math.sin(r.a)*r.r*(1.1-r.l));c.stroke()}
   requestAnimationFrame(draw)})();
  $$('[data-tilt]').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
-  el.style.transform=`perspective(800px) rotateY(${(x-.5)*14}deg) rotateX(${(.5-y)*14}deg) translateZ(0)`;el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%')});
+  const M=+el.dataset.tm||18;el.style.transform=`perspective(800px) rotateY(${(x-.5)*M}deg) rotateX(${(.5-y)*M}deg) translateZ(0)`;el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%')});
   el.addEventListener('mouseleave',()=>el.style.transform='')});
  $$('[data-mag]').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`});el.addEventListener('mouseleave',()=>el.style.transform='')})}
 /* network canvas */
