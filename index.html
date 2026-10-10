@@ -30,26 +30,34 @@
 
 <main id="top">
 <section class="sec hero">
+  <div class="stage" aria-hidden="true">
+    <i class="st-haze"></i><i class="st-arc a1"></i><i class="st-arc a2"></i><i class="st-arc a3"></i>
+    <div class="st-panel p-l2"></div><div class="st-panel p-l1"></div><div class="st-panel p-r2"></div><div class="st-panel p-r1"></div><div class="st-panel p-t1"></div><div class="st-fg"></div>
+    <svg class="st-circuit c-l" viewBox="0 0 260 380"><path d="M0 40H70L100 70H170V150L196 176H260"/><path class="pulse" d="M0 40H70L100 70H170V150L196 176H260"/><circle cx="70" cy="40" r="2.5"/><circle cx="170" cy="70" r="2.5"/></svg><svg class="st-circuit c-r" viewBox="0 0 260 380"><path d="M0 40H70L100 70H170V150L196 176H260"/><path class="pulse" d="M0 40H70L100 70H170V150L196 176H260"/><circle cx="70" cy="40" r="2.5"/><circle cx="170" cy="70" r="2.5"/></svg>
+    <span class="st-dust"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+  </div>
   <div>
     <span class="live mono">STATUS: AKTIF BELAJAR</span>
     <p class="greet mono"><span id="greet">Selamat pagi</span>, saya</p>
-    <h1 class="glitch" data-text="Niko Afriyanto">Niko Afriyanto</h1>
+    <h1 class="glitch" data-text="Niko Afriyanto"><span class="nm1">Niko</span> <span class="nm2">Afriyanto</span></h1>
     <p class="role mono" id="role"></p>
     <p class="lead">Siswa PPLG yang sedang belajar membangun website, memahami UI/UX, dan mengembangkan kemampuan melalui berbagai proyek.</p>
     <div class="btns"><a href="#works" class="btn p" data-mag>Lihat Proyek</a><a href="#contact" class="btn s" data-mag>Hubungi Saya</a></div>
   </div>
   <div class="hero-art-wrap">
-    <div class="hero-suspension" aria-label="Foto profil Niko Afriyanto dalam frame futuristik">
+    <div class="hero-suspension" data-zone aria-label="Foto profil Niko Afriyanto dalam frame futuristik">
       <div class="rig">
+        <div class="rig-haze" aria-hidden="true"></div><div class="rig-beam" aria-hidden="true"></div><div class="floor" aria-hidden="true"></div>
         <div class="mount" aria-hidden="true"></div>
         <div class="suspension-cable cable-left" aria-hidden="true"></div>
         <div class="suspension-cable cable-right" aria-hidden="true"></div>
-        <svg class="platform" viewBox="0 0 420 100" aria-hidden="true"><defs><radialGradient id="pgl"><stop offset="0" stop-color="#D4AF37" stop-opacity=".28"/><stop offset="1" stop-color="#D4AF37" stop-opacity="0"/></radialGradient></defs><ellipse cx="210" cy="52" rx="205" ry="46" fill="url(#pgl)"/><ellipse class="ring ring-one" cx="210" cy="50" rx="198" ry="40"/><ellipse class="ring ring-two" cx="210" cy="50" rx="150" ry="30"/><ellipse class="ring ring-three" cx="210" cy="50" rx="102" ry="20"/></svg>
+        <svg class="platform" viewBox="0 0 420 100" aria-hidden="true"><defs><radialGradient id="pgl"><stop offset="0" stop-color="#D4AF37" stop-opacity=".28"/><stop offset="1" stop-color="#D4AF37" stop-opacity="0"/></radialGradient></defs><ellipse cx="210" cy="52" rx="205" ry="46" fill="url(#pgl)"/><defs><linearGradient id="spg" x1="0" x2="1"><stop offset="0" stop-color="#FFD21F" stop-opacity="0"/><stop offset=".5" stop-color="#FFE9A0" stop-opacity=".95"/><stop offset="1" stop-color="#FFD21F" stop-opacity="0"/></linearGradient></defs><ellipse class="p-contact" cx="210" cy="50" rx="120" ry="20"/><ellipse class="ring-glow" cx="210" cy="50" rx="198" ry="40"/><ellipse class="ring ring-one" cx="210" cy="50" rx="198" ry="40"/><path class="ring-spec" d="M12 50A198 40 0 0 0 408 50"/><ellipse class="ring ring-two" cx="210" cy="50" rx="150" ry="30"/><ellipse class="ring ring-three" cx="210" cy="50" rx="102" ry="20"/></svg>
         <div class="portrait-tilt" id="ph" data-tilt data-tm="10">
           <div class="portrait-shell">
             <span class="p-shadow" aria-hidden="true"></span><span class="p-glow" aria-hidden="true"></span><span class="p-glow-hover" aria-hidden="true"></span>
             <div class="portrait-frame frame-back" aria-hidden="true"></div>
             <div class="portrait-frame frame-mid" aria-hidden="true"></div>
+            <div class="portrait-frame frame-depth" aria-hidden="true"></div>
             <div class="portrait-frame frame-front"><div class="frame-body">
               <div class="pi" id="pi"><img src="assets/images/niko-profile.jpeg" alt="Niko Afriyanto" width="800" height="1000" fetchpriority="high"><span class="fb">NA</span></div>
             </div></div>
@@ -119,7 +127,7 @@
          Rasio ideal 16:10. Yang tidak ada otomatis dilewati; jika semuanya tidak ada tampil wordmark VELLORA. -->
     <article class="card pc fp featured-project rv" data-c="fullstack" id="vellora">
       <div class="fpv">
-        <div class="fpf" id="vf" data-shots='[["assets/images/vellora-home.png.jpg","Homepage"],["assets/images/vellora-products.png.jpg","Produk"],["assets/images/vellora-detail.jpg.jpg","Detail Produk"],["assets/images/vellora-articles.png.jpg","Artikel"]]'>
+        <div class="fpf" id="vf" data-shots='[["assets/images/vellora-home.png.jpg","Homepage"],["assets/images/vellora-products.png.jpg","Produk"],["assets/images/vellora-detail.jpg.jpg","Tentang"],["assets/images/vellora-articles.png.jpg","Artikel"]]'>
           <img alt="Tampilan website VELLORA" width="1600" height="1000" decoding="async">
           <div class="fph" aria-hidden="true"><b>VELLORA</b><span class="mono">LUXURY DIGITAL PLATFORM</span></div>
         </div>

@@ -3,6 +3,10 @@ window.__niko=true;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+/* satu pengelola animasi untuk semua canvas (jeda otomatis saat tab tersembunyi) */
+const tasks=[];let raf=0;const tick=()=>{raf=0;if(document.hidden)return;for(const f of tasks)f();raf=requestAnimationFrame(tick)};
+const addTask=f=>{tasks.push(f);if(!raf&&!document.hidden)raf=requestAnimationFrame(tick)};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!raf&&tasks.length)raf=requestAnimationFrame(tick)});
 /* boot */
 const boot=$('#boot');
 if(RM){boot.remove()}else{
@@ -37,6 +41,8 @@ const vf=$('#vf');if(vf){const shots=JSON.parse(vf.dataset.shots),main=vf.queryS
   show(L[0])};
  shots.forEach(([src,label],i)=>{const t=new Image();t.onload=()=>{ok[i]={src,label};fin()};t.onerror=fin;t.src=src})}
 $$('a[data-todo]').forEach(a=>a.addEventListener('click',e=>{if(a.getAttribute('href')==='#')e.preventDefault()}));
+/* hemat CPU: jeda animasi CSS hero saat tidak terlihat */
+const hero=$('.hero');if(hero&&'IntersectionObserver'in window)new IntersectionObserver(es=>hero.classList.toggle('off',!es[0].isIntersecting)).observe(hero);
 /* marquee */
 const words=['HTML','CSS','JAVASCRIPT','PHP','LARAVEL','MYSQL','GIT','FIGMA','UI/UX','TRADING'];
 const row=words.map(w=>`<span>${w}</span>`).join('');$('#mt').innerHTML=row+row+row+row;
@@ -73,7 +79,7 @@ if(fine&&!RM){const cv2=document.createElement('canvas');cv2.id='cfx';document.b
  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;tr.push({x:mx,y:my,t:performance.now()});if(tr.length>20)tr.shift();spark(mx,my,hov?3:1,hov?4.5:2.5)});
  document.addEventListener('mouseover',e=>hov=!!e.target.closest('a,button'));
  addEventListener('mousedown',e=>{spark(e.clientX,e.clientY,30,10);for(let i=0;i<9;i++)rays.push({x:e.clientX,y:e.clientY,a:Math.random()*6.283,r:30+Math.random()*70,l:1})});
- (function draw(){c.clearRect(0,0,W2,H2);const now=performance.now();while(tr.length&&now-tr[0].t>240)tr.shift();
+ addTask(function draw(){c.clearRect(0,0,W2,H2);const now=performance.now();while(tr.length&&now-tr[0].t>240)tr.shift();
   c.lineCap='round';c.lineJoin='round';
   if(tr.length>1){for(const pass of [0,1]){c.beginPath();tr.forEach((q,i)=>{const j=i&&i<tr.length-1?(Math.random()-.5)*9:0;i?c.lineTo(q.x+j,q.y+j):c.moveTo(q.x,q.y)});
    if(!pass){c.shadowColor='#F5C518';c.shadowBlur=16;c.strokeStyle='rgba(245,197,24,.9)';c.lineWidth=3.2}else{c.shadowBlur=0;c.strokeStyle='#fff';c.lineWidth=1.1}c.stroke()}}
@@ -82,21 +88,19 @@ if(fine&&!RM){const cv2=document.createElement('canvas');cv2.id='cfx';document.b
   for(let i=sp.length-1;i>=0;i--){const p=sp[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.09;p.l-=.032;if(p.l<=0){sp.splice(i,1);continue}
    c.strokeStyle=`rgba(${p.c},${p.l})`;c.lineWidth=1.6;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(p.x-p.vx*2.5,p.y-p.vy*2.5);c.stroke()}
   for(let i=rays.length-1;i>=0;i--){const r=rays[i];r.l-=.08;if(r.l<=0){rays.splice(i,1);continue}
-   c.strokeStyle=`rgba(255,240,170,${r.l})`;c.lineWidth=2;c.beginPath();c.moveTo(r.x+Math.cos(r.a)*r.r*(1-r.l)*.6,r.y+Math.sin(r.a)*r.r*(1-r.l)*.6);c.lineTo(r.x+Math.cos(r.a)*r.r*(1.1-r.l),r.y+Math.sin(r.a)*r.r*(1.1-r.l));c.stroke()}
-  requestAnimationFrame(draw)})();
- $$('[data-tilt]').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+   c.strokeStyle=`rgba(255,240,170,${r.l})`;c.lineWidth=2;c.beginPath();c.moveTo(r.x+Math.cos(r.a)*r.r*(1-r.l)*.6,r.y+Math.sin(r.a)*r.r*(1-r.l)*.6);c.lineTo(r.x+Math.cos(r.a)*r.r*(1.1-r.l),r.y+Math.sin(r.a)*r.r*(1.1-r.l));c.stroke()}})
+ $$('[data-tilt]').forEach(el=>{const zn=el.closest('[data-zone]')||el;zn.addEventListener('mousemove',e=>{const r=zn.getBoundingClientRect(),x=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width)),y=Math.min(1,Math.max(0,(e.clientY-r.top)/r.height));
   const M=+el.dataset.tm||18;el.style.transform=`perspective(800px) rotateY(${(x-.5)*M}deg) rotateX(${(.5-y)*M}deg) translateZ(0)`;el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%')});
-  el.addEventListener('mouseleave',()=>el.style.transform='')});
+  zn.addEventListener('mouseleave',()=>el.style.transform='')});
  $$('[data-mag]').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`});el.addEventListener('mouseleave',()=>el.style.transform='')})}
 /* network canvas */
 const cv=$('#bg');if(!RM){const x=cv.getContext('2d');let W,H,P=[],run=true;
- const size=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:innerWidth<700?26:60},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5}))};
- size();addEventListener('resize',size);document.addEventListener('visibilitychange',()=>{run=!document.hidden;if(run)loop()});
- function loop(){if(!run)return;x.clearRect(0,0,W,H);
+ const size=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:innerWidth<700?20:42},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5}))};
+ size();addEventListener('resize',size);
+ function loop(){x.clearRect(0,0,W,H);
   for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
    const dx=mx-p.x,dy=my-p.y,d=Math.hypot(dx,dy);if(d<160){p.x-=dx*.012;p.y-=dy*.012;x.strokeStyle=`rgba(225,11,42,${1-d/160})`;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(mx,my);x.stroke()}
    x.fillStyle='rgba(245,197,24,.55)';x.fillRect(p.x,p.y,2,2)}
-  for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);if(d<110){x.strokeStyle=`rgba(245,197,24,${.14*(1-d/110)})`;x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);x.stroke()}}
-  requestAnimationFrame(loop)}
- loop()}
+  for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);if(d<110){x.strokeStyle=`rgba(245,197,24,${.1*(1-d/110)})`;x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);x.stroke()}}}
+ addTask(loop)}
 })();
