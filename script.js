@@ -24,37 +24,43 @@ if(RM){boot.remove()}else{
   bb.animate([{transform:'scale(1.15)',textShadow:'0 0 60px #F5C518,0 0 20px #E10B2A'},{transform:'none',textShadow:'none'}],{duration:260})};
  const fade=()=>{if(!boot.isConnected)return;lx.shadowBlur=0;lx.fillStyle='rgba(0,0,0,.16)';lx.fillRect(0,0,LW,LH);requestAnimationFrame(fade)};fade();
  const sched=()=>{if(over||!boot.isConnected)return;strike(false);setTimeout(sched,70+Math.random()*(230-p*1.4))};sched();
- const t=setInterval(()=>{p=Math.min(100,p+Math.ceil(Math.random()*9));$('#be').style.width=p+'%';$('#bt').textContent='CHARGING PORTFOLIO... '+p+'%';
-  if(p>=100){clearInterval(t);over=true;strike(true);setTimeout(()=>strike(true),140);setTimeout(()=>strike(true),290);
-   setTimeout(()=>{boot.classList.add('done');setTimeout(()=>boot.remove(),900)},650)}},80)}
+ const T0=performance.now(),DUR=850;let fin=false;
+ const finish=()=>{if(fin)return;fin=true;over=true;strike(true);setTimeout(()=>strike(true),120);setTimeout(()=>{boot.classList.add('done');setTimeout(()=>boot.remove(),600)},260)};
+ const t=setInterval(()=>{const e=performance.now()-T0,k=Math.min(1,e/DUR);p=Math.round((1-Math.pow(1-k,2))*100);$('#be').style.width=p+'%';$('#bt').textContent='BOOTING PORTFOLIO... '+p+'%';
+  if(p>=100&&(document.readyState==='complete'||e>=1400)){clearInterval(t);finish()}},40);
+ setTimeout(()=>{clearInterval(t);finish()},1600)}
 /* greeting */
 const h=new Date().getHours();$('#greet').textContent=h>=5&&h<11?'Selamat pagi':h<15&&h>=11?'Selamat siang':h>=15&&h<18?'Selamat sore':'Selamat malam';
 /* photo fallback */
 const pi=$('#pi'),im=pi.querySelector('img'),miss=()=>pi.classList.add('nop');
 im.addEventListener('error',miss);if(im && im.complete && !im.naturalWidth) miss();
-/* VELLORA: preview screenshot (hanya memakai file yang benar-benar ada) + placeholder URL */
-const vf=$('#vf');if(vf){const shots=JSON.parse(vf.dataset.shots),main=vf.querySelector('img'),th=$('#vth'),ok=[];let n=0;
- const show=s=>{main.src=s.src;main.alt='Tampilan '+s.label+' website VELLORA';th.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.src===s.src))};
+/* VELLORA: screenshot (hanya file yang benar-benar ada). Dicek/dimuat saat section mendekati layar, bukan saat halaman dibuka. */
+const vf=$('#vf');
+const initVellora=()=>{const shots=JSON.parse(vf.dataset.shots),main=vf.querySelector('img'),lnk=vf.querySelector('.fpz'),th=$('#vth'),ok=[];let n=0;
+ const show=s=>{main.src=s.src;lnk.href=s.src;lnk.setAttribute('aria-label','Buka screenshot '+s.label+' ukuran penuh di tab baru');main.alt='Tampilan '+s.label+' website VELLORA';th.querySelectorAll('button').forEach(b=>{const on=b.dataset.src===s.src;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)})};
  const fin=()=>{if(++n<shots.length)return;const L=ok.filter(Boolean);if(!L.length){vf.classList.add('nop');return}
-  if(L.length>1){th.hidden=false;L.forEach(s=>{const b=document.createElement('button');b.type='button';b.dataset.src=s.src;b.setAttribute('aria-label','Lihat '+s.label);
-   const i=document.createElement('img');i.src=s.src;i.alt='';i.loading='lazy';i.decoding='async';b.append(i);b.onclick=()=>show(s);th.append(b)})}
+  if(L.length>1){th.hidden=false;L.forEach(s=>{const b=document.createElement('button');b.type='button';b.dataset.src=s.src;b.setAttribute('aria-label','Lihat tampilan '+s.label);b.setAttribute('aria-pressed','false');
+   const c=document.createElement('span');c.className='tc';const i=document.createElement('img');i.src=s.src;i.alt='';i.loading='lazy';i.decoding='async';c.append(i);
+   const t=document.createElement('span');t.className='tcap mono';t.textContent=s.label;b.append(c,t);b.onclick=()=>show(s);th.append(b)})}
   show(L[0])};
- shots.forEach(([src,label],i)=>{const t=new Image();t.onload=()=>{ok[i]={src,label};fin()};t.onerror=fin;t.src=src})}
-$$('a[data-todo]').forEach(a=>a.addEventListener('click',e=>{if(a.getAttribute('href')==='#')e.preventDefault()}));
+ shots.forEach(([src,label],i)=>{const t=new Image();t.onload=()=>{ok[i]={src,label};fin()};t.onerror=fin;t.src=src})};
+if(vf){if('IntersectionObserver'in window){const vo=new IntersectionObserver(es=>{if(es[0].isIntersecting){vo.disconnect();initVellora()}},{rootMargin:'800px 0px'});vo.observe(vf)}else initVellora()}
 /* hemat CPU: jeda animasi CSS hero saat tidak terlihat */
 const hero=$('.hero');if(hero&&'IntersectionObserver'in window)new IntersectionObserver(es=>hero.classList.toggle('off',!es[0].isIntersecting)).observe(hero);
 /* marquee */
 const words=['HTML','CSS','JAVASCRIPT','PHP','LARAVEL','MYSQL','GIT','FIGMA','UI/UX','TRADING'];
 const row=words.map(w=>`<span>${w}</span>`).join('');$('#mt').innerHTML=row+row+row+row;
 /* role typer */
-const roles=['Siswa PPLG','Pemula web developer','Belajar UI/UX','Menjelajah Laravel'];let ri=0,ci=0,del=false;const re=$('#role');
+const roles=['Siswa PPLG','Pemula web developer','Belajar UI/UX','Menjelajah Laravel'];let ri=0,del=true;const re=$('#role');let ci=roles[0].length+1;
 const type=()=>{const w=roles[ri];re.firstChild?re.firstChild.nodeValue=w.slice(0,ci):re.append(w.slice(0,ci));
- if(!del&&ci++===w.length){del=true;return setTimeout(type,1400)}if(del&&--ci===0){del=false;ri=(ri+1)%roles.length}setTimeout(type,del?35:75)};
-RM?re.append(roles[0]):type();
+ if(!del&&ci++===w.length){del=true;return setTimeout(type,1400)}if(del&&--ci===1){del=false;ri=(ri+1)%roles.length}setTimeout(type,del?35:75)};
+if(!RM)setTimeout(type,2600);
 /* progress + menu */
 const pr=$('#prog');addEventListener('scroll',()=>{pr.style.width=scrollY/(document.documentElement.scrollHeight-innerHeight)*100+'%'},{passive:true});
-const bm=$('#bm'),mm=$('#mm');bm.onclick=()=>{const o=mm.classList.toggle('open');bm.setAttribute('aria-expanded',o)};
-mm.querySelectorAll('a').forEach(a=>a.onclick=()=>{mm.classList.remove('open');bm.setAttribute('aria-expanded',false)});
+const bm=$('#bm'),mm=$('#mm');const setMenu=o=>{mm.classList.toggle('open',o);bm.setAttribute('aria-expanded',o);bm.setAttribute('aria-label',o?'Tutup menu':'Buka menu')};
+bm.onclick=()=>setMenu(!mm.classList.contains('open'));
+mm.querySelectorAll('a').forEach(a=>a.onclick=()=>setMenu(false));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&mm.classList.contains('open')){setMenu(false);bm.focus()}});
 /* reveal, bars, count, terminal */
 const lines=[['$ whoami','k'],['Niko Afriyanto, siswa PPLG','o'],['$ cat sekolah.txt','k'],['SMK Ma\'arif Walisongo Kajoran','o'],['$ cat fokus.txt','k'],['HTML, CSS, JavaScript, PHP, Laravel, MySQL, dasar UI/UX (Figma)','o'],['$ cat cara-belajar.txt','k'],['Praktik langsung: belajar, coba di proyek kecil, catat di GitHub.','o'],['$ cat hobi.txt','k'],['Bola voli, dan trading sebagai minat tambahan.','o']];
 let tdone=false;const tb=$('#tb');
@@ -66,8 +72,11 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return
  t.querySelectorAll('[data-c]').forEach(n=>{if(n.tagName!=='B')return;const T=+n.dataset.c;if(RM){n.textContent=T;return}let c=0;const k=setInterval(()=>{c=Math.min(T,c+1);n.textContent=c;if(c>=T)clearInterval(k)},90)});
  if(t.id==='tb'||t.contains(tb))runTerm();io.unobserve(t)}),{threshold:.15});
 $$('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+/* navbar: tandai section yang sedang dilihat */
+const navA=$$('.nl a,#mm a');const spy=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;navA.forEach(a=>{const on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('act',on);on?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current')})}),{rootMargin:'-45% 0px -50% 0px'});
+['about','skills','exp','works','contact'].forEach(id=>{const el=document.getElementById(id);if(el)spy.observe(el)});
 /* filter */
-$$('.fb2').forEach(b=>b.onclick=()=>{$$('.fb2').forEach(x=>x.classList.remove('on'));b.classList.add('on');$$('.pc').forEach(c=>c.classList.toggle('h',b.dataset.f!=='all'&&c.dataset.c!==b.dataset.f))});
+$$('.fb2').forEach(b=>b.onclick=()=>{$$('.fb2').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-pressed','false')});b.classList.add('on');b.setAttribute('aria-pressed','true');$$('.pc').forEach(c=>c.classList.toggle('h',b.dataset.f!=='all'&&c.dataset.c!==b.dataset.f))});
 /* copy */
 $('#cp').onclick=async()=>{try{await navigator.clipboard.writeText($('#mail').textContent);$('#cp').textContent='Tersalin';setTimeout(()=>$('#cp').textContent='Salin',1600)}catch(e){}};
 /* cursor, tilt, magnetic */
@@ -83,8 +92,10 @@ if(fine&&!RM){const cv2=document.createElement('canvas');cv2.id='cfx';document.b
   c.lineCap='round';c.lineJoin='round';
   if(tr.length>1){for(const pass of [0,1]){c.beginPath();tr.forEach((q,i)=>{const j=i&&i<tr.length-1?(Math.random()-.5)*9:0;i?c.lineTo(q.x+j,q.y+j):c.moveTo(q.x,q.y)});
    if(!pass){c.shadowColor='#F5C518';c.shadowBlur=16;c.strokeStyle='rgba(245,197,24,.9)';c.lineWidth=3.2}else{c.shadowBlur=0;c.strokeStyle='#fff';c.lineWidth=1.1}c.stroke()}}
-  c.shadowBlur=0;const L=hov?14:8;c.strokeStyle=hov?'#E10B2A':'#F5C518';c.lineWidth=2;c.beginPath();
-  c.moveTo(mx-L,my);c.lineTo(mx+L,my);c.moveTo(mx,my-L);c.lineTo(mx,my+L);c.stroke();
+  const col=hov?'#E10B2A':'#F5C518',L=hov?17:12,G=hov?5:4,B=hov?22:17,K=hov?8:6;
+  c.shadowColor=col;c.shadowBlur=hov?16:10;c.strokeStyle=col;c.lineWidth=2.2;c.beginPath();
+  c.moveTo(mx-L,my);c.lineTo(mx-G,my);c.moveTo(mx+G,my);c.lineTo(mx+L,my);c.moveTo(mx,my-L);c.lineTo(mx,my-G);c.moveTo(mx,my+G);c.lineTo(mx,my+L);c.stroke();
+  c.lineWidth=1.6;c.beginPath();for(const[sx,sy]of[[-1,-1],[1,-1],[1,1],[-1,1]]){c.moveTo(mx+sx*B,my+sy*(B-K));c.lineTo(mx+sx*B,my+sy*B);c.lineTo(mx+sx*(B-K),my+sy*B)}c.stroke();c.shadowBlur=0;
   for(let i=sp.length-1;i>=0;i--){const p=sp[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.09;p.l-=.032;if(p.l<=0){sp.splice(i,1);continue}
    c.strokeStyle=`rgba(${p.c},${p.l})`;c.lineWidth=1.6;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(p.x-p.vx*2.5,p.y-p.vy*2.5);c.stroke()}
   for(let i=rays.length-1;i>=0;i--){const r=rays[i];r.l-=.08;if(r.l<=0){rays.splice(i,1);continue}

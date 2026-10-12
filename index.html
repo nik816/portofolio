@@ -10,13 +10,15 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23050506'/%3E%3Ctext x='50' y='72' font-size='64' font-weight='800' text-anchor='middle' fill='%23F5C518' font-family='Arial'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap"></noscript>
 <link rel="stylesheet" href="style.css">
 <noscript><style>.rv{opacity:1!important;transform:none!important}#boot{display:none!important}</style></noscript>
 <script>setTimeout(function(){if(!window.__niko)document.documentElement.classList.add("js-fail")},6000)</script>
 </head>
 <body>
 <div id="boot" aria-hidden="true"><canvas id="lc"></canvas><div id="fl"></div><b>NKO</b><span class="mono" id="bt">BOOTING PORTFOLIO... 0%</span><i><em id="be"></em></i></div>
+<a class="skip" href="#top">Lewati ke konten utama</a>
 <div id="prog"></div><canvas id="bg"></canvas>
 
 <nav>
@@ -28,19 +30,17 @@
   <div id="mm"><a href="#about">Tentang</a><a href="#skills">Keahlian</a><a href="#exp">Pengalaman</a><a href="#works">Proyek</a><a href="#contact">Kontak</a></div>
 </nav>
 
-<main id="top">
+<main id="top" tabindex="-1">
 <section class="sec hero">
   <div class="stage" aria-hidden="true">
     <i class="st-haze"></i><i class="st-arc a1"></i><i class="st-arc a2"></i><i class="st-arc a3"></i>
     <div class="st-panel p-l2"></div><div class="st-panel p-l1"></div><div class="st-panel p-r2"></div><div class="st-panel p-r1"></div><div class="st-panel p-t1"></div><div class="st-fg"></div>
-    <svg class="st-circuit c-l" viewBox="0 0 260 380"><path d="M0 40H70L100 70H170V150L196 176H260"/><path class="pulse" d="M0 40H70L100 70H170V150L196 176H260"/><circle cx="70" cy="40" r="2.5"/><circle cx="170" cy="70" r="2.5"/></svg><svg class="st-circuit c-r" viewBox="0 0 260 380"><path d="M0 40H70L100 70H170V150L196 176H260"/><path class="pulse" d="M0 40H70L100 70H170V150L196 176H260"/><circle cx="70" cy="40" r="2.5"/><circle cx="170" cy="70" r="2.5"/></svg>
-    <span class="st-dust"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <svg class="st-circuit c-l" viewBox="0 0 260 380"><path d="M0 40H70L100 70H170V150L196 176H260"/><circle cx="70" cy="40" r="2.5"/><circle cx="170" cy="70" r="2.5"/></svg><svg class="st-circuit c-r" viewBox="0 0 260 380"><path d="M0 40H70L100 70H170V150L196 176H260"/><circle cx="70" cy="40" r="2.5"/><circle cx="170" cy="70" r="2.5"/></svg>
   </div>
-  <div>
-    <span class="live mono">STATUS: AKTIF BELAJAR</span>
+  <div class="hero-copy">
     <p class="greet mono"><span id="greet">Selamat pagi</span>, saya</p>
     <h1 class="glitch" data-text="Niko Afriyanto"><span class="nm1">Niko</span> <span class="nm2">Afriyanto</span></h1>
-    <p class="role mono" id="role"></p>
+    <p class="role mono" aria-hidden="true"><span id="role">Siswa PPLG</span></p>
     <p class="lead">Siswa PPLG yang sedang belajar membangun website, memahami UI/UX, dan mengembangkan kemampuan melalui berbagai proyek.</p>
     <div class="btns"><a href="#works" class="btn p" data-mag>Lihat Proyek</a><a href="#contact" class="btn s" data-mag>Hubungi Saya</a></div>
   </div>
@@ -86,80 +86,94 @@
 
 <section class="sec" id="skills">
   <span class="tag mono rv">// 02 KEAHLIAN</span><h2 class="rv">YANG SEDANG SAYA PELAJARI</h2>
-  <p class="rv" style="color:var(--m);margin:-1.5rem 0 2rem">Level di bawah adalah penilaian jujur saya saat ini, bukan klaim keahlian.</p>
+  <p class="rv sub">Level di bawah adalah penilaian jujur saya saat ini, bukan klaim keahlian.</p>
   <div class="grid g3">
     <div class="card rv" data-tilt><h3>Web Development</h3><p>Belajar membuat tampilan responsif dan halaman yang rapi.</p>
       <div class="lv"><div><span>HTML &amp; CSS</span><span>Cukup memahami</span></div><div class="bar"><i data-w="65"></i></div>
       <div><span>JavaScript</span><span>Dasar, sedang dikembangkan</span></div><div class="bar"><i data-w="35"></i></div>
       <div><span>PHP &amp; Laravel</span><span>Sedang dipelajari</span></div><div class="bar"><i data-w="45"></i></div>
       <div><span>MySQL</span><span>Sedang dipelajari</span></div><div class="bar"><i data-w="45"></i></div></div>
-      <span class="tg">Bootstrap</span><span class="tg">Tailwind</span><span class="tg">Figma</span><span class="tg">UI/UX</span></div>
+      <div class="tags"><span class="tg">Bootstrap</span><span class="tg">Tailwind</span><span class="tg">Figma</span><span class="tg">UI/UX</span></div></div>
     <div class="card rv" data-tilt><h3>Backend &amp; Tools</h3><p>Dasar backend dan alat yang dipakai saat mengerjakan proyek.</p>
       <div class="lv"><div><span>Node.js</span><span>Dasar</span></div><div class="bar"><i data-w="25"></i></div>
       <div><span>REST API</span><span>Sedang dipelajari</span></div><div class="bar"><i data-w="40"></i></div>
       <div><span>Git &amp; GitHub</span><span>Sering digunakan</span></div><div class="bar"><i data-w="75"></i></div></div>
-      <span class="tg">VS Code</span><span class="tg">Postman</span><span class="tg">JWT</span><span class="tg">XAMPP</span></div>
+      <div class="tags"><span class="tg">VS Code</span><span class="tg">Postman</span><span class="tg">JWT</span><span class="tg">XAMPP</span></div></div>
     <div class="card rv" data-tilt><h3>Trading (dasar)</h3><p>Minat tambahan: belajar membaca chart dengan analisis teknikal.</p>
       <div class="lv"><div><span>Support &amp; Resistance</span><span>Cukup memahami</span></div><div class="bar"><i data-w="60"></i></div>
       <div><span>Smart Money Concept</span><span>Sedang dipelajari</span></div><div class="bar"><i data-w="45"></i></div>
       <div><span>Risk Management</span><span>Cukup memahami</span></div><div class="bar"><i data-w="60"></i></div></div>
-      <span class="tg">TradingView</span><span class="tg">MetaTrader 5</span></div>
+      <div class="tags"><span class="tg">TradingView</span><span class="tg">MetaTrader 5</span></div></div>
   </div>
 </section>
 
 <section class="sec" id="exp">
   <span class="tag mono rv">// 03 PENGALAMAN</span><h2 class="rv">PERJALANAN BELAJAR</h2>
   <div class="tl">
-    <div class="ti rv"><div class="card" data-tilt><span class="d mono">2024 — 2027</span><h3>Siswa PPLG</h3><p style="color:var(--g)">SMK Ma'arif Walisongo Kajoran</p>
+    <div class="ti rv"><div class="card" data-tilt><span class="d mono">2024 — 2027</span><h3>Siswa PPLG</h3><p class="org">SMK Ma'arif Walisongo Kajoran</p>
       <ul><li>Belajar dasar pemrograman web: HTML, CSS, JavaScript, PHP, dan MySQL.</li><li>Membuat proyek latihan dengan Laravel dan Bootstrap.</li><li>Memakai Git &amp; GitHub untuk menyimpan dan mencatat proses belajar.</li></ul></div></div>
-    <div class="ti rv"><div class="card" data-tilt><span class="d mono">2024 — Sekarang</span><h3>Belajar Trading Forex</h3><p style="color:var(--g)">Mandiri</p>
+    <div class="ti rv"><div class="card" data-tilt><span class="d mono">2024 — Sekarang</span><h3>Belajar Trading Forex</h3><p class="org">Mandiri</p>
       <ul><li>Belajar membaca pergerakan harga dengan Support &amp; Resistance dan Smart Money Concept.</li><li>Memakai TradingView dan MetaTrader 5 untuk latihan analisis.</li><li>Melatih disiplin dan kesabaran dalam mengambil keputusan.</li></ul></div></div>
   </div>
 </section>
 
 <section class="sec" id="works">
   <span class="tag mono rv">// 04 PROYEK</span><h2 class="rv">PROYEK SAYA</h2>
-  <div class="fl rv"><button class="fb2 on" data-f="all">Semua</button><button class="fb2" data-f="fullstack">Fullstack</button><button class="fb2" data-f="backend">Backend</button></div>
+  <div class="fl rv"><button class="fb2 on" data-f="all" aria-pressed="true">Semua</button><button class="fb2" data-f="fullstack" aria-pressed="false">Fullstack</button><button class="fb2" data-f="backend" aria-pressed="false">Backend</button></div>
   <div class="grid">
     <!-- FEATURED: VELLORA
          Screenshot yang benar-benar ada di assets/images/:
          vellora-home.png.jpg, vellora-products.png.jpg, vellora-detail.jpg.jpg, vellora-articles.png.jpg
-         Rasio ideal 16:10. Yang tidak ada otomatis dilewati; jika semuanya tidak ada tampil wordmark VELLORA. -->
-    <article class="card pc fp featured-project rv" data-c="fullstack" id="vellora">
+         (nama file memang berekstensi ganda; path sudah dicek cocok). File yang tidak ada otomatis dilewati;
+         jika semuanya tidak ada tampil wordmark VELLORA.
+         Gambar aslinya sudah berupa mockup jendela browser, jadi di CSS (.fpf/.tc) dipotong ke area jendela agar UI terbaca. -->
+    <article class="card pc fp featured-project rv" data-c="fullstack" id="vellora" aria-labelledby="vellora-title">
       <div class="fpv">
         <div class="fpf" id="vf" data-shots='[["assets/images/vellora-home.png.jpg","Homepage"],["assets/images/vellora-products.png.jpg","Produk"],["assets/images/vellora-detail.jpg.jpg","Tentang"],["assets/images/vellora-articles.png.jpg","Artikel"]]'>
-          <img alt="Tampilan website VELLORA" width="1600" height="1000" decoding="async">
-          <div class="fph" aria-hidden="true"><b>VELLORA</b><span class="mono">LUXURY DIGITAL PLATFORM</span></div>
+          <a class="fpz" target="_blank" rel="noopener" aria-label="Buka screenshot ukuran penuh di tab baru"><img alt="Tampilan website VELLORA" width="1376" height="768" decoding="async"></a>
+          <div class="fph" aria-hidden="true"><b>VELLORA</b><span class="mono">KATALOG DIGITAL</span></div>
         </div>
-        <div class="fpth" id="vth" hidden></div>
+        <div class="fpth" id="vth" role="group" aria-label="Pilih tampilan VELLORA" hidden></div>
       </div>
       <div class="fpb">
-        <span class="st2 mono">FEATURED PROJECT</span>
-        <h3>VELLORA <span>— Luxury Digital Platform</span></h3>
-        <p>Website digital catalog dengan konsep visual luxury black &amp; gold yang dirancang untuk memberikan pengalaman pengguna yang modern, elegan, dan responsif.</p>
-        <div style="margin-top:.9rem"><span class="tg">Laravel</span><span class="tg">PHP</span><span class="tg">Blade</span><span class="tg">Tailwind CSS</span><span class="tg">JavaScript</span><span class="tg">MySQL</span></div>
-        <ul class="fpl">
-          <li>Premium black &amp; gold UI</li><li>Responsive design</li><li>Product catalog</li><li>Product detail</li><li>Article system</li><li>Product review</li><li>Authentication</li><li>Admin dashboard</li><li>CRUD product</li><li>CRUD article</li><li>Dynamic database content</li><li>Interactive visual effects</li>
-        </ul>
-        <!-- TODO: ganti href="#" dengan URL VELLORA yang asli (demo atau GitHub). Selama masih "#", tombol tidak melompat ke atas halaman. -->
-        <div class="btns"><a href="#" class="btn p" data-todo="vellora-url">Lihat Project</a></div>
+        <div class="fpm">
+          <span class="st2 mono">FEATURED PROJECT</span>
+          <h3 id="vellora-title">VELLORA <span>Website katalog digital</span></h3>
+          <p>Website katalog digital dengan konsep visual luxury black &amp; gold, dirancang agar terasa modern, elegan, dan responsif. Pengunjung dapat melihat produk dan artikel; admin mengelola kontennya lewat dashboard.</p>
+          <div class="tags"><span class="tg">Laravel</span><span class="tg">PHP</span><span class="tg">Blade</span><span class="tg">Tailwind CSS</span><span class="tg">JavaScript</span><span class="tg">MySQL</span></div>
+        </div>
+        <div class="fpa">
+          <ul class="fpl">
+            <li>Katalog dan detail produk, lengkap dengan review produk</li>
+            <li>Sistem artikel</li>
+            <li>Autentikasi pengguna</li>
+            <li>Dashboard admin dengan CRUD produk dan artikel</li>
+            <li>Konten dinamis dari database</li>
+            <li>Tampilan black &amp; gold yang responsif, dengan efek visual interaktif</li>
+          </ul>
+          <!-- TODO: URL demo / GitHub VELLORA belum ada di workspace, jadi tidak dibuatkan link palsu.
+               Setelah ada, ganti <span class="btn off">...</span> di bawah dengan:
+               <a href="URL-ASLI" class="btn p" target="_blank" rel="noopener" data-mag>Lihat Project</a> -->
+          <div class="btns"><span class="btn off" aria-disabled="true">Link demo / repository belum tersedia</span></div>
+        </div>
       </div>
     </article>
     <div class="card pc rv" data-c="fullstack" data-tilt><div class="pt">LIB</div><span class="st2 mono">PROJECT LATIHAN</span><h3>Sistem Informasi Perpustakaan</h3>
       <p>Project latihan untuk mempraktikkan pendataan buku dan pencatatan peminjaman dalam sebuah aplikasi web.</p>
-      <div style="margin-top:.8rem"><span class="tg">HTML5</span><span class="tg">Tailwind</span><span class="tg">JavaScript</span><span class="tg">PHP</span></div>
-      <!-- TODO: ganti href="#" dengan link GitHub / demo asli -->
-      <div class="pl"><a href="#">GitHub</a><a href="#">Demo</a></div></div>
+      <div class="tags"><span class="tg">HTML5</span><span class="tg">Tailwind</span><span class="tg">JavaScript</span><span class="tg">PHP</span></div>
+      <!-- TODO: URL GitHub / demo belum ada di workspace. Ganti tiap <span class="off"> dengan <a href="URL-ASLI" target="_blank" rel="noopener">GitHub</a> setelah tersedia. -->
+      <div class="pl"><span class="off" aria-disabled="true">GitHub · belum tersedia</span><span class="off" aria-disabled="true">Demo · belum tersedia</span></div></div>
     <div class="card pc rv" data-c="backend" data-tilt><div class="pt">API</div><span class="st2 mono">SEDANG DIPELAJARI</span><h3>Secure REST API System</h3>
       <p>Project yang dibuat untuk mempelajari REST API dengan Node.js, login memakai JWT, dan pengujian lewat Postman.</p>
-      <div style="margin-top:.8rem"><span class="tg">Node.js</span><span class="tg">Express</span><span class="tg">JWT</span><span class="tg">Postman</span></div>
-      <div class="pl"><a href="#">GitHub</a></div></div>
+      <div class="tags"><span class="tg">Node.js</span><span class="tg">Express</span><span class="tg">JWT</span><span class="tg">Postman</span></div>
+      <!-- TODO: URL GitHub belum ada di workspace; ganti span.off dengan <a href="URL-ASLI" target="_blank" rel="noopener">GitHub</a> -->
+      <div class="pl"><span class="off" aria-disabled="true">GitHub · belum tersedia</span></div></div>
   </div>
 </section>
 
 <section class="sec ct" id="contact">
   <span class="tag mono rv">// 05 KONTAK</span><h2 class="rv">ADA YANG INGIN DIDISKUSIKAN?</h2>
-  <p class="rv" style="color:var(--m);max-width:520px;margin:-1.5rem auto 2rem">Saya terbuka untuk berdiskusi tentang project, belajar web development, atau hal lainnya.</p>
+  <p class="rv sub">Saya terbuka untuk berdiskusi tentang project, belajar web development, atau hal lainnya.</p>
   <div class="em mono rv"><span id="mail">nikoafriyanto020@gmail.com</span><button id="cp">Salin</button></div>
   <div class="sg">
     <a class="card sc rv" data-tilt href="mailto:nikoafriyanto020@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg><b>Email</b><span>nikoafriyanto020@gmail.com</span></a>
